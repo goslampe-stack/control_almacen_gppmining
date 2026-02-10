@@ -1,0 +1,105 @@
+
+.gl-content-login { background: #1c3faa;font-family: 'Roboto', sans-serif; } /* background: #1c3faa; */
+@media (min-width:576px) { .gl-content-login { background: #1c3faa; } }
+@media (min-width:768px) { .gl-content-login { background: #1c3faa; } }
+@media (min-width:992px) { .gl-content-login { background: #1c3faa; } }
+@media (min-width:1200px) { .gl-content-login { background: url('https://res.cloudinary.com/velasquezpaz/image/upload/v1626296367/goktpqgxbum0xvzjz1s0.png');background-size: cover; } }
+
+/* https://res.cloudinary.com/velasquezpaz/image/upload/v1626296055/o2d9we4wu7yeazta7oay.png */
+/* https://res.cloudinary.com/velasquezpaz/image/upload/v1626296367/goktpqgxbum0xvzjz1s0.png */
+
+.gl-row-login { /* background: white; */height: 100vh; /* margin-top: 10%; */ }
+/* .gl-col-descripcion { background: green; }
+.gl-col-formulario { background: white; } */
+
+.gl-col-formulario .card { background: #ffffff; }
+@media (min-width:576px) { .gl-col-formulario .card { background: #ffffff; } }
+@media (min-width:768px) { .gl-col-formulario .card { background: #ffffff; } }
+@media (min-width:992px) { .gl-col-formulario .card { background: #ffffff; } }
+@media (min-width:1200px) { .gl-col-formulario .card { background: transparent} }
+
+
+/* DESCRIPCION */
+
+.gl-col-descripcion { display: none; }
+@media (min-width:576px) { .gl-col-descripcion { display: none; } }
+@media (min-width:768px) { .gl-col-descripcion { display: none; } }
+@media (min-width:992px) { .gl-col-descripcion { display: none; } }
+@media (min-width:1200px) { .gl-col-descripcion { display: initial; } }
+
+.gl-col-descripcion img { width: 50%;margin-bottom: 2rem; }
+
+.gl-col-descripcion h1 { color: #fff;font-size: 2.25rem;margin-bottom: 1rem; }
+.gl-col-descripcion h2 { color: #fff;font-size: 1.125rem; }
+
+/* TITULO */
+
+.gl-row-titulo { text-align: center; }
+@media (min-width:576px) { .gl-row-titulo { text-align: center; } }
+@media (min-width:768px) { .gl-row-titulo { text-align: center; } }
+@media (min-width:992px) { .gl-row-titulo { text-align: center; } }
+@media (min-width:1200px) { .gl-row-titulo { text-align: left; } }
+
+.gl-row-titulo h1 { color: rgba(45, 55, 72, 1);margin-bottom: 0rem;font-size: 1.875rem;font-weight: 700; }
+@media (min-width:576px) { .gl-row-titulo h1 { margin-bottom: 0rem; } }
+@media (min-width:768px) { .gl-row-titulo h1 { margin-bottom: 0rem; } }
+@media (min-width:992px) { .gl-row-titulo h1 { margin-bottom: 1.5rem; } }
+@media (min-width:1200px) { .gl-row-titulo h1 { margin-bottom: 2rem; } }
+
+/* MENSAJE */
+
+.gl-row-mensaje { color: rgba(160, 174, 192, 1);font-size: 14px;text-align: center;display: initial; }
+@media (min-width:576px) { .gl-row-mensaje { display: initial; } }
+@media (min-width:768px) { .gl-row-mensaje { display: initial; } }
+@media (min-width:992px) { .gl-row-mensaje { display: none; } }
+@media (min-width:1200px) { .gl-row-mensaje { display: none; } }
+
+/* EMAIL */
+
+.gl-row-email input, .gl-row-password input { padding: 1.35rem 1rem;font-size: 14px;border-radius: 0.375rem; }
+.gl-row-email input::placeholder, .gl-row-password input::placeholder { font-size: 14px; }
+.gl-row-email input:focus, .gl-row-password input:focus { font-size: 14px; }
+
+/* RECORDATORIO */
+
+.gl-row-recordatorio { font-size: 12px; }
+
+@media (min-width:576px) { .gl-row-recordatorio { font-size: 14px; } }
+@media (min-width:768px) { .gl-row-recordatorio { font-size: 14px; } }
+@media (min-width:992px) { .gl-row-recordatorio { font-size: 14px; } }
+@media (min-width:1200px) { .gl-row-recordatorio { font-size: 14px; } }
+
+.gl-col-recuerdame {}
+.gl-col-recuerdame label { color: rgba(74, 85, 104, 1);font-weight: normal !important; }
+
+.gl-col-olvide-contrasena { text-align: right; }
+.gl-col-olvide-contrasena a { color: rgba(74, 85, 104, 1); }
+
+/* ACCION */
+.gl-row-accion { margin-top: 1rem; }
+
+.gl-row-accion .gl-col-iniciar-sesion button { width: 100%;margin-bottom: 1rem;border-radius: 0.375rem; }
+@media (min-width:576px) { .gl-row-accion .gl-col-iniciar-sesion button {  } }
+@media (min-width:768px) { .gl-row-accion .gl-col-iniciar-sesion button {  } }
+@media (min-width:992px) { .gl-row-accion .gl-col-iniciar-sesion button { width: initial;margin-bottom: 0rem; } }
+@media (min-width:1200px) { .gl-row-accion .gl-col-iniciar-sesion button { width: initial;margin-bottom: 0rem; } }
+
+.gl-row-accion .gl-col-registrate { display: flex;justify-content: center; }
+@media (min-width:576px) { .gl-row-accion .gl-col-registrate { justify-content: center; } }
+@media (min-width:768px) { .gl-row-accion .gl-col-registrate { justify-content: center; } }
+@media (min-width:992px) { .gl-row-accion .gl-col-registrate { justify-content: left; } }
+@media (min-width:1200px) { .gl-row-accion .gl-col-registrate { justify-content: left; } }
+
+.gl-row-accion .gl-col-registrate a { border-radius: 0.375rem; }
+
+/* TERMINOS Y CONDICINES */
+
+.gl-row-terminos-condiciones { font-size: 14px;text-align: center; }
+
+@media (min-width:576px) { .gl-row-terminos-condiciones { text-align: center; } }
+@media (min-width:768px) { .gl-row-terminos-condiciones { text-align: center; } }
+@media (min-width:992px) { .gl-row-terminos-condiciones { text-align: center; } }
+@media (min-width:1200px) { .gl-row-terminos-condiciones { text-align: left; } }
+
+.gl-row-terminos-condiciones p { color: rgba(74, 85, 104, 1);margin-top: 1.5rem; }
+.gl-row-terminos-condiciones a { color: rgba(28, 63, 170, 1); }

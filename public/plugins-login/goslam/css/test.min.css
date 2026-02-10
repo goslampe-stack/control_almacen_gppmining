@@ -1,0 +1,14 @@
+.bg-fantasma { background: #caeeca !important; }
+
+.form-control-fantasma { background: #caeeca !important; }
+
+/* ==================================================
+    IMAGEN
+================================================== */
+
+.ap-form-nueva-imagen { /* background: #000; */margin-top: 1rem;border: 2px dashed #dadde1;border-radius: 1rem;text-align: center !important; }
+
+.ap-form-nueva-imagen .icono { color: #c2c6cb;margin-top: 2rem;font-size: 2rem; }
+
+.ap-form-nueva-imagen .descripcion { margin-bottom: 1rem; }
+.ap-form-nueva-imagen .descripcion label { color: #409afa;font-family: tahoma;font-size: 12px;cursor: pointer; }

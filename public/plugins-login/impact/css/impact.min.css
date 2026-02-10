@@ -1,0 +1,32 @@
+.login-page { background: #ffffff; }
+
+.login-page .login-box { width: 90%;z-index: 1; } /* width: 360px; */
+
+@media (min-width:576px) { .login-page .login-box { width: 90%; } }
+@media (min-width:768px) { .login-page .login-box { width: 370px; } }
+@media (min-width:992px) { .login-page .login-box { width: 450px; } }
+@media (min-width:1200px) { .login-page .login-box { width: 450px; } }
+
+.login-page .login-box .login-logo {}
+.login-page .login-box .login-logo a { color: #fff; }
+.login-page .login-box .card { box-shadow: none;border: 1px solid #e9ecef; }
+
+.login-page .login-box .login-card-body { background: #f7fafc;color: #8898aa;padding: 1.5rem;border-radius: .375rem; }
+@media (min-width:576px) { .login-page .login-box .login-card-body { padding: 1.5rem; } }
+@media (min-width:768px) { .login-page .login-box .login-card-body {  } }
+@media (min-width:992px) { .login-page .login-box .login-card-body { padding: 3rem; } }
+@media (min-width:1200px) { .login-page .login-box .login-card-body { padding: 3rem; } }
+
+.login-page .login-box .input-group { box-shadow: 0 1px 3px rgba(50,50,93,.15),0 1px 0 rgba(0,0,0,.02); }
+.login-page .login-box .input-group .form-control { border-color: #ffffff;padding-top: 1.3rem;padding-bottom: 1.3rem; }
+.login-page .login-box .input-group .form-control::placeholder { color: #adb5bd; }
+.login-page .login-box .input-group .input-group-append { background: #ffffff; }
+.login-page .login-box .input-group .input-group-append .input-group-text { color: #adb5bd;border-color: #ffffff; }
+
+/*.bg-wave { background: linear-gradient(87deg,#0a48b3 0,#120ab3 100%);width: 100%;height: 500px;position: fixed;z-index: 0;top: 0; }*/
+
+/* -------------------------------------------------- */
+
+.login-page { position: relative;background-color: #0a48b3;background-image: linear-gradient(87deg,#0a48b3 0,#120ab3 100%); }
+
+.login-page:before { content: "";position: absolute;bottom: 0;left: 0;width: 100%;height: 250px;background: url(https://media.geeksforgeeks.org/wp-content/uploads/20200326181026/wave3.png);background-size: cover;background-repeat: no-repeat; }

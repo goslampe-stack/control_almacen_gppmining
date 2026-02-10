@@ -1,0 +1,17 @@
+
+#section-home .form-group a { color: #737373; }
+
+#section-pricing .pb_pricing_v1 {}
+#section-pricing .pb_pricing_v1 ul { list-style: none; }
+
+.gs-terminos-condiciones .item a { color: #ffffff !important; }
+.gs-terminos-condiciones .item p { color: #eeeeee; }
+
+.gs-terminos-condiciones .py-3 h3 { color: #ffffff;margin-left: .5rem;margin-bottom: 1rem;font-size: 1rem;font-weight: bold !important;text-transform: uppercase; }
+.gs-terminos-condiciones .py-3 h5 { color: #ffffff;margin-left: 1.5rem;margin-bottom: 1rem;font-size: .9rem;font-weight: bold !important;text-transform: uppercase; }
+.gs-terminos-condiciones .py-3 ul { list-style-type: circle; }
+.gs-terminos-condiciones .py-3 ul li { color: #eeeeee;margin-bottom: 1.5rem;text-align: justify; }
+.gs-terminos-condiciones .py-3 p { color: #eeeeee;margin-bottom: 1.5rem;text-align: justify; }
+
+
+.gs-verificar-email .descripcion { color: rgba(255, 255, 255, 0.8) !important;font-size: 20px; }

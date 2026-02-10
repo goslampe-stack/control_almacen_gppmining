@@ -1,0 +1,286 @@
+/**
+*	#. GENERAL
+*	-------------------------------------------------------------------------------------------------------------------------------------
+**/
+
+
+/* https://res.cloudinary.com/velasquezpaz/image/upload/v1621627085/es1zve7iwpkeunbs8ty7.jpg */
+
+.ap-guest {
+    background: url(https://res.cloudinary.com/velasquezpaz/image/upload/v1621632786/xc6jj8vvjljqlul4bggh.jpg);
+    background-size: cover;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.ap-guest .ap-login {
+    width: 100%;
+    height: 100%;
+    margin-top: 40%;
+}
+
+.ap-guest .ap-login .logo {
+    width: 100%;
+    padding-top: 5.5rem;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.ap-guest .ap-login .formulario {
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.ap-guest .ap-login .formulario a {
+    color: #F2994A !important;
+}
+
+.ap-guest .ap-login .formulario a:hover {
+    color: #da8b45 !important;
+    text-decoration: underline;
+}
+
+#hexagono {
+    width: 95%;
+    height: 508px;
+    margin: auto;
+    overflow: hidden;
+    transform: rotate(120deg);
+    visibility: hidden;
+}
+
+#hexagono-2 {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    transform: rotate(-60deg);
+}
+
+#hexagono-3 {
+    background: url(https://res.cloudinary.com/velasquez-paz/image/upload/v1620849165/m4nl6lfdiphheap1ujvt.png);
+    width: 100%;
+    height: 100%;
+    transform: rotate(-60deg);
+    visibility: visible;
+}
+
+
+/*	login	*/
+
+.btn-login {
+    padding: .6rem 2rem;
+    border-radius: 1.5rem;
+    text-transform: uppercase;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+
+/**
+*	#. FONT
+*	-------------------------------------------------------------------------------------------------------------------------------------
+**/
+
+.ap-font-xs {}
+
+.ap-font-sm {}
+
+.ap-font-md {}
+
+.ap-font-lg {}
+
+
+/**
+*	#. LOGO
+*	-------------------------------------------------------------------------------------------------------------------------------------
+**/
+
+.logo .trans1 {
+    background: #500000;
+    background: -webkit-linear-gradient(to top, #500000 0%, #0905e6 63%);
+    background: -moz-linear-gradient(to top, #500000 0%, #0905e6 63%);
+    background: linear-gradient(to top, #500000 0%, #0905e6 63%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.logo .trans2 {
+    background: #0905e6;
+    background: -webkit-linear-gradient(to top, #0905e6 0%, #fde900 63%);
+    background: -moz-linear-gradient(to top, #0905e6 0%, #fde900 63%);
+    background: linear-gradient(to top, #0905e6 0%, #fde900 63%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.logo .trans3 {
+    background: #6d0c26;
+    background: -webkit-linear-gradient(to top, #6d0c26 0%, #ce2d35 63%);
+    background: -moz-linear-gradient(to top, #6d0c26 0%, #ce2d35 63%);
+    background: linear-gradient(to top, #6d0c26 0%, #ce2d35 63%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+/**
+*	#. COLUMN
+*	-------------------------------------------------------------------------------------------------------------------------------------
+**/
+
+
+/**
+*	#. CHECKBOX
+*	-------------------------------------------------------------------------------------------------------------------------------------
+**/
+
+.ap-checkbox {
+    padding: 0.7rem !important;
+    border-radius: 6px;
+}
+
+.ap-col-p-0 {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+
+/**
+*	#. INPUT
+*	-------------------------------------------------------------------------------------------------------------------------------------
+**/
+
+.ap-guest .ap-input-text {
+    background: #f3f3f3;
+    color: #8d8f8e;
+    padding-left: 15px;
+    padding-right: 15px;
+    border: none;
+    border-right: none;
+    border-top-left-radius: 4px !important;
+    border-bottom-left-radius: 4px !important;
+}
+
+.ap-guest .ap-input-control {
+    background: #f3f3f3;
+    color: #8d8f8e;
+    padding: 1.7rem 0 1.7rem 0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    border: none;
+    border-left: none;
+    border-top-right-radius: 4px !important;
+    border-bottom-right-radius: 4px !important;
+}
+
+
+/**
+*	#. BUTTON
+*	-------------------------------------------------------------------------------------------------------------------------------------
+**/
+
+.btn-sunkist {
+    background: #F2994A;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #F2C94C, #F2994A);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #F2C94C, #F2994A);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: #fff;
+}
+
+.btn-sunkist:hover {
+    background: #e69248;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #e2bc48, #e69248);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #e2bc48, #e69248);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: #fff;
+}
+
+.btn-ibiza {
+    background: #ee0979;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ff6a00, #ee0979);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ff6a00, #ee0979);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: #fff;
+}
+
+
+/**
+*	#. RECUPERAR CONTRASEÑA
+*	-------------------------------------------------------------------------------------------------------------------------------------
+**/
+
+.ap-guest .recuperar-contrasena .formulario {
+    background: #fff;
+    width: 100%;
+    padding: 3rem 3rem 1.5rem 3rem;
+    /*padding-top: 3rem;padding-bottom: 1.5rem;*/
+    position: fixed;
+    bottom: 0;
+}
+
+.ap-input-control-fp {
+    padding-left: 1rem !important;
+}
+
+.ap-input-text-fp {
+    background: #F2994A !important;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #F2C94C, #F2994A) !important;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #F2C94C, #F2994A) !important;
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: #fff !important;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+}
+
+
+/**
+*	#. PARTICLES
+*	-------------------------------------------------------------------------------------------------------------------------------------
+**/
+
+.ap-particles {
+    width: 97%;
+    height: 100%;
+    position: absolute;
+}
+
+
+/**
+*	#. BACKGROUND BLACK - TRANSPARENCIA - PORCENTAJE
+*	-------------------------------------------------------------------------------------------------------------------------------------
+**/
+
+
+/*
+
+20: https://res.cloudinary.com/velasquez-paz/image/upload/v1620847736/xtzdoo5z1jzlw9tqhdh1.png;
+30: https://res.cloudinary.com/velasquez-paz/image/upload/v1620849165/m4nl6lfdiphheap1ujvt.png;
+
+*/
+
+
+/**
+*	#. BACKGROUND WHITE - TRANSPARENCIA - PORCENTAJE
+*	-------------------------------------------------------------------------------------------------------------------------------------
+**/
+
+
+/*
+
+90: https://res.cloudinary.com/velasquez-paz/image/upload/v1620922356/mz2pys43fztdpxmyrein.png;
+50: https://res.cloudinary.com/velasquez-paz/image/upload/v1620922440/yf1uta5ywlmqcbdjlnt7.png;
+
+*/

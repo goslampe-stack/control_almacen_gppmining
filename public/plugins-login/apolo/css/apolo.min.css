@@ -1,0 +1,186 @@
+
+/**
+*	#. BACKGROUND
+*	-------------------------------------------------------------------------------------------------------------------------------------
+**/
+
+.ap-bg-gray {
+	background: #f2f2f2;
+	color: #666666;
+}
+
+/**
+*	#. MODAL
+*	-------------------------------------------------------------------------------------------------------------------------------------
+**/
+
+.ap-mo-bl { border-radius: .3rem 0 0 .3rem; }
+
+.ap-mo-panel { width: 100%;margin-top: 1rem;}
+
+.ap-mo-panel .item { background: #cdd7e3;color: #277ef3;margin-bottom: 1rem;padding: .3rem .5rem;font-family: 'Roboto', sans-serif;font-size: 14px;border-radius: .4rem;display: block; }
+
+.ap-mo-content {}
+.ap-mo-content .titulo { font-size: 18px;font-weight: bold;display: block; }
+.ap-mo-content .sub-titulo { margin-bottom: 1rem;display: block; }
+.ap-mo-content .info { font-size: 14px;display: block; }
+
+/**
+*	#. ESPACIO
+*	-------------------------------------------------------------------------------------------------------------------------------------
+**/
+
+.ap-sp-t-1 {margin-top: 10%;}
+.ap-sp-t-2 {margin-top: 20%;}
+.ap-sp-t-3 {margin-top: 30%;}
+.ap-sp-t-4 {margin-top: 40%;}
+.ap-sp-t-5 {margin-top: 50%;}
+.ap-sp-t-6 {margin-top: 60%;}
+.ap-sp-t-7 {margin-top: 70%;}
+.ap-sp-t-8 {margin-top: 80%;}
+.ap-sp-t-9 {margin-top: 90%;}
+.ap-sp-t-10 {margin-top: 100%;}
+
+.ap-sp-l-1 {margin-left: 10%;}
+.ap-sp-l-2 {margin-left: 20%;}
+.ap-sp-l-3 {margin-left: 30%;}
+.ap-sp-l-4 {margin-left: 40%;}
+.ap-sp-l-5 {margin-left: 50%;}
+.ap-sp-l-6 {margin-left: 60%;}
+.ap-sp-l-7 {margin-left: 70%;}
+.ap-sp-l-8 {margin-left: 80%;}
+.ap-sp-l-9 {margin-left: 90%;}
+.ap-sp-l-10 {margin-left: 100%;}
+
+.ap-sp-r-1 {margin-right: 10%;}
+.ap-sp-r-2 {margin-right: 20%;}
+.ap-sp-r-3 {margin-right: 30%;}
+.ap-sp-r-4 {margin-right: 40%;}
+.ap-sp-r-5 {margin-right: 50%;}
+.ap-sp-r-6 {margin-right: 60%;}
+.ap-sp-r-7 {margin-right: 70%;}
+.ap-sp-r-8 {margin-right: 80%;}
+.ap-sp-r-9 {margin-right: 90%;}
+.ap-sp-r-10 {margin-right: 100%;}
+
+.ap-sp-b-1 {margin-bottom: 10%;}
+.ap-sp-b-2 {margin-bottom: 20%;}
+.ap-sp-b-3 {margin-bottom: 30%;}
+.ap-sp-b-4 {margin-bottom: 40%;}
+.ap-sp-b-5 {margin-bottom: 50%;}
+.ap-sp-b-6 {margin-bottom: 60%;}
+.ap-sp-b-7 {margin-bottom: 70%;}
+.ap-sp-b-8 {margin-bottom: 80%;}
+.ap-sp-b-9 {margin-bottom: 90%;}
+.ap-sp-b-10 {margin-bottom: 100%;}
+
+/**
+*	#. FONT
+*	-------------------------------------------------------------------------------------------------------------------------------------
+**/
+
+.ap-font-sz-1 { font-size: 8px; }
+.ap-font-sz-2 { font-size: 8px; }
+.ap-font-sz-3 { font-size: 8px; }
+.ap-font-sz-4 { font-size: 8px; }
+.ap-font-sz-5 { font-size: 8px; }
+
+/*
+    FORM - IMAGEN - EMPRESA
+*/
+
+.apl-file-box {
+    margin-top: 1rem;
+    border: 2px dashed #e0e0e0;
+    border-radius: .75rem;
+}
+
+.apl-file-box .descripcion {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.apl-file-box .descripcion label {
+    font-weight: normal;
+}
+
+.apl-file-box .descripcion font {
+    color: #007bff;
+    cursor: pointer;
+}
+
+.apl-file-box .descripcion font:hover {
+    color: #0056b3;
+}
+
+
+/*adicional*/
+
+.apl-file-box-adicional-full {
+    /* height: 130px; */
+    margin-top: 1rem;
+    border: 1px solid #dadde1;
+    border-radius: .75rem;
+    background-size: cover;
+}
+
+.apl-container-imagen-table {
+    height: 50px;
+    width: 50px;
+    margin-top: 1rem;
+    border: 1px solid #dadde1;
+    border-radius: .75rem;
+    background-size: cover;
+}
+
+.apl-container-imagen-table::after {
+    display: flexbox;
+}
+
+.apl-container-imagen-table img {
+    border-radius: .75rem;
+}
+
+.apl-file-box-adicional-full img {
+    border-radius: .75rem;
+}
+
+
+/* - */
+
+.apl-file-box-adicional {
+    margin-top: 1rem;
+    border: 2px dashed #dadde1;
+    border-radius: .75rem;
+}
+
+.apl-file-box-adicional .img {
+    color: #c2c6cb;
+    padding-top: 2rem;
+}
+
+.apl-file-box-adicional .descripcion {
+    color: #737373;
+    text-align: center;
+}
+
+.apl-file-box-adicional .descripcion label {
+    font-weight: normal;
+    font-size: 15px;
+    margin-top: .5rem;
+    margin-bottom: 1rem;
+}
+
+.apl-pointer-label {
+    cursor: pointer;
+    color: #409afa;
+}
+
+.apl-pointer-label:hover {
+    color: #5fbeee;
+}
+
+
+/*
+    FORM - IMAGEN - EMPRESA
+*/

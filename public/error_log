@@ -1,0 +1,4 @@
+[21-Apr-2021 12:14:11 America/Lima] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 20480 bytes) in /home/cia7v8etcekg/public_html/inventario/vendor/dompdf/dompdf/src/Css/Style.php on line 885
+[21-Apr-2021 12:14:33 America/Lima] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 20480 bytes) in /home/cia7v8etcekg/public_html/inventario/vendor/dompdf/dompdf/src/Css/Style.php on line 883
+[21-Apr-2021 12:14:59 America/Lima] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 20480 bytes) in /home/cia7v8etcekg/public_html/inventario/vendor/dompdf/dompdf/src/Css/Style.php on line 885
+[21-Apr-2021 12:15:25 America/Lima] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 20480 bytes) in /home/cia7v8etcekg/public_html/inventario/vendor/dompdf/dompdf/src/Css/Style.php on line 885
