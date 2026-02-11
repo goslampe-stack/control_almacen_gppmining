@@ -31,7 +31,7 @@ class IngresosArticulos extends Controller
 
         $articulos = ArticuloIngreso::where('orden_de_compras_id', '=', $ingreso->orden_de_compras_id)->orderBy('id', 'asc')->get();
 
-       
+
 
 
         $total_articulos = 0;
@@ -39,25 +39,49 @@ class IngresosArticulos extends Controller
             $total_articulos = $total_articulos + $d->cantidad;
         }
 
-
-
         $sucursalEmpresa = SucursalEmpresa::find($this->sucursal_empresas_id_seleccionado);
 
 
-        $personalPdf = PersonalPdf::where('estado','=','1')->where('tipo_opcion','=','Ingreso')->where('sucursal_empresas_id','=',$this->sucursal_empresas_id_seleccionado)->take(3)->get();
-       
+        ///////LEEMOS EL ARRAGLO
+        $abrirPdfPorEmpreas = Util::getAbrirPdfTipoEmpresaSeleccionada();
+
+        ///verificamos si se abrira con la empresa tipo o normal
+        if ($abrirPdfPorEmpreas == "SI") {
+            $ruc = $sucursalEmpresa->empresa->ruc;
+            if (Util::tienePdfDefinidoEmpresa($ruc, 'ingreso-articulos')) {
+                $nameUrl = "admin.pdf.empresa." . $ruc . ".ingreso-articulos";
+                //GRUPO ALFA DORADO
+            }
+        }
+
+        ///verificamos para aumentar el tamaño del espacio
+
+
+
+
+
+        $personalPdf = PersonalPdf::where('estado', '=', '1')->where('tipo_opcion', '=', 'Ingreso')->where('sucursal_empresas_id', '=', $this->sucursal_empresas_id_seleccionado)->take(3)->get();
+
 
         $name_pdf = "Ingreso-N°-" . $ingreso->numero_ingreso . ".pdf";
-   return PDF::loadView('admin.pdf.ingreso', compact(
-               'ingreso',
+
+        $data = PDF::loadView($nameUrl, compact(
+            'ingreso',
             'personalPdf',
             'total_articulos',
             'sucursalEmpresa',
             'articulos',
-        ))->setPaper('a4', 'portrait')->download($name_pdf); 
+        ));
 
-     
-       /*  $data = PDF::loadView('admin.pdf.ingreso', compact(
+
+        if (Util::getEstaEnServidor()) {
+            return $data->setPaper('a4', 'portrait')->download($name_pdf);
+        } else {
+            return $data->stream($name_pdf);
+        }
+
+
+        /*  $data = PDF::loadView('admin.pdf.ingreso', compact(
             'ingreso',
             'personalPdf',
             'total_articulos',
@@ -65,8 +89,6 @@ class IngresosArticulos extends Controller
             'articulos',
         ));
         return $data->stream($name_pdf);  */
-
-
     }
     public function imprimirIngresoGeneral($fecha_ingreso)
     {
@@ -83,12 +105,12 @@ class IngresosArticulos extends Controller
                 $articulo = $articulos[$i];
                 $articulo2 = $articulos[$i + 1];
 
-                if($articulo!=null && $articulo2!=null){
+                if ($articulo != null && $articulo2 != null) {
 
-                    if($articulo->articuloRequerimiento!=null && $articulo2->articuloRequerimiento!=null){
+                    if ($articulo->articuloRequerimiento != null && $articulo2->articuloRequerimiento != null) {
 
-                        if($articulo->articuloRequerimiento->articulo!=null && $articulo2->articuloRequerimiento->articulo){
-        
+                        if ($articulo->articuloRequerimiento->articulo != null && $articulo2->articuloRequerimiento->articulo) {
+
                             if ($articulo->articuloRequerimiento->articulo->codigo > $articulo2->articuloRequerimiento->articulo->codigo) {
                                 $tmp = $articulos[$i + 1];
                                 $articulos[$i + 1] = $articulos[$i];
@@ -96,9 +118,7 @@ class IngresosArticulos extends Controller
                             }
                         }
                     }
-
                 }
-
             }
         }
 
@@ -116,15 +136,15 @@ class IngresosArticulos extends Controller
 
         $usuario = auth()->user();
 
-        $datos_generados =$this->modelarFechaArticuloOrdenCompra();
-        
+        $datos_generados = $this->modelarFechaArticuloOrdenCompra();
+
         $reverse = array_unique($datos_generados);
-        
+
         $contador = 0;
         $formato_numero_serie = '0000';
-        
+
         foreach ($reverse as $orden) {
-            $fecha=Util::darFormatoFecha($orden);
+            $fecha = Util::darFormatoFecha($orden);
             if ($orden == $fecha_ingreso) {
                 $formato_numero_serie = Util::formarNumeroRequerimiento($contador);
                 break;
@@ -132,7 +152,7 @@ class IngresosArticulos extends Controller
             $contador = $contador + 1;
         }
 
-        $name_pdf = "Ingreso-N°".$formato_numero_serie.".pdf";
+        $name_pdf = "Ingreso-N°" . $formato_numero_serie . ".pdf";
         return PDF::loadView('admin.pdf.ingreso-general', compact(
             'usuario',
             'fecha_ingreso',

@@ -34,7 +34,7 @@ class ImprimirPDF extends Controller
     public $criterioBusqueda, $rango_inicio, $rango_fin;
 
 
-    public function imprimirPdfs($criterioBusqueda, $rango_inicio, $rango_fin, $mes, $anio, $articulo)
+    public function imprimirPdfsa($criterioBusqueda, $rango_inicio, $rango_fin, $mes, $anio, $articulo)
     {
 
 
@@ -224,6 +224,235 @@ class ImprimirPDF extends Controller
             'auxiliarGeneral',
         ))->setPaper('a4', 'landscape')->download($name_pdf);
 
+
+
+
+
+        /* $data = PDF::loadView('admin.pdf.kardex', compact(
+          
+            'articulo',
+            'sucursalEmpresa',
+            'criterioBusqueda',
+            'personalPdf',
+            'rango_inicio',
+            'rango_fin',
+            'auxiliarGeneral',
+        ))->setPaper('a4', 'landscape');
+        return $data->stream($name_pdf); */
+    }
+
+     public function imprimirPdfs($criterioBusqueda, $rango_inicio, $rango_fin, $mes, $anio, $articulo)
+    {
+
+
+
+        if (!Util::getExisteTiendaSeleccionadaLocalStorage()) {
+            return redirect()->route('dashboard');
+        } else {
+            $this->sucursal_empresas_id_seleccionado = Util::getSucursalEmpresaIdLocalStorage();
+        }
+
+        $this->articulo_id = $articulo;
+
+
+        date_default_timezone_set('America/Lima');
+
+        $dataGeneral = [];
+
+        /*   $response = ArticuloRequerimientoPersonal::where('articulos_id', '=', $this->articulo_id)->where('sucursal_empresas_id', '=', $this->sucursal_empresas_id_seleccionado)->get();
+ */
+
+        $response = ArticuloSolicitudCotizacion::join('sucursal_empresas', 'articulo_solicitud_cotizacions.sucursal_empresas_id', '=', 'sucursal_empresas.id')
+            ->join('articulo_requerimiento_compras', 'articulo_solicitud_cotizacions.articuloCompras_id', '=', 'articulo_requerimiento_compras.id')
+            ->join('articulo_requerimiento_personals', 'articulo_requerimiento_compras.articulo_r_personals_id', '=', 'articulo_requerimiento_personals.id')
+            ->select('articulo_solicitud_cotizacions.*')
+            ->where('sucursal_empresas.empresas_id', '=', Util::getTiendaIdLocalStorage())
+            ->where('articulo_requerimiento_personals.articulos_id', '=', $this->articulo_id)
+            ->get();
+
+        //Ingreso
+        $articuloIngresoAux = [];
+        foreach ($response as $row) {
+
+            $articuloIngresoAux[] = ArticuloIngreso::join('articulo_orden_compras', 'articulo_ingresos.articulos_orden_id', '=', 'articulo_orden_compras.id')
+                ->select('articulo_ingresos.*')
+                ->where('articulo_orden_compras.articulo_s_cotizacion_id', '=', $row->id)
+                ->orderByRaw("STR_TO_DATE(articulo_orden_compras.fecha_ingreso, '%d-%m-%Y %H:%i:%s') DESC")
+                ->get();
+        }
+
+        //devoluciones
+
+        $articuloDevolucionesAux = ArticuloDevolucion::join('sucursal_empresas', 'articulo_devolucions.sucursal_empresas_id', '=', 'sucursal_empresas.id')
+            ->select('articulo_devolucions.*')
+            ->where('sucursal_empresas.empresas_id', '=', Util::getTiendaIdLocalStorage())
+            ->where('articulo_devolucions.articulos_id', '=', $this->articulo_id)
+            ->get();
+
+
+
+
+        //salidas 
+
+
+
+        $articuloSalidaAux = SalidaDetalle::join('sucursal_empresas', 'salida_detalles.sucursal_empresas_id', '=', 'sucursal_empresas.id')
+            ->select('salida_detalles.*')
+            ->where('sucursal_empresas.empresas_id', '=', Util::getTiendaIdLocalStorage())
+            ->where('salida_detalles.articulos_id', '=', $this->articulo_id)
+            ->get();
+
+
+
+        $dataGeneral = [];
+
+
+
+        //ingreso
+        if ($articuloIngresoAux != null) {
+            $i = 0;
+            foreach ($articuloIngresoAux as $itemAux) {
+
+                foreach ($itemAux as $item) {
+
+                    $auxiliar = [
+                        'nombre' => 'Ingreso',
+                        'estado' => 'true',
+                        'articulo' => "Compra " . $item->tipo_documento . " N°  " . $item->numero_documento,
+                        'cantidad' => $item->cantidad,
+                        'fecha' => $item->fecha_ingreso,
+                        'auxo' => $item->fecha_ingreso,
+                        'precio' => $item->precio_unitario,
+                        'tipoDevolucion' => "",
+
+                        'cantidad-entrada' => "",
+                        'precio-entrada' => "",
+                        'total-entrada' => "",
+
+                        'cantidad-salida' => "",
+                        'precio-salida' => "",
+                        'total-salida' => "",
+
+                        'cantidad-existencia' => "",
+                        'precio-existencia' => "",
+                        'total-existencia' => "",
+
+
+                    ];
+
+                    $dataGeneral[] = $auxiliar;
+                }
+            }
+        }
+
+        //devoluciones
+        foreach ($articuloDevolucionesAux as $item) {
+            $auxiliar = [
+                'nombre' => 'Devolucion',
+                'estado' => 'true',
+                'articulo' => $item->tipoDevolucion,
+                'cantidad' => $item->cantidad,
+                'fecha' => $item->fecha_devolucion,
+                'auxo' => $item->fecha_devolucion,
+                'precio' => "",
+                'tipoDevolucion' => $item->tipoDevolucion,
+
+                'cantidad-entrada' => "",
+                'precio-entrada' => "",
+                'total-entrada' => "",
+
+                'cantidad-salida' => "",
+                'precio-salida' => "",
+                'total-salida' => "",
+
+                'cantidad-existencia' => "",
+                'precio-existencia' => "",
+                'total-existencia' => "",
+
+            ];
+
+            $dataGeneral[] = $auxiliar;
+        }
+
+        //salidas
+        foreach ($articuloSalidaAux as $item) {
+            $auxiliar = [
+                'nombre' => 'Salida',
+                'estado' => 'true',
+                'articulo' => "Salida de artículo",
+                'cantidad' => $item->cantidad,
+                'fecha' => $item->fecha_salida_detalle,
+                'auxo' => $item->fecha_salida_detalle,
+                'tipoDevolucion' => "",
+
+                'cantidad-entrada' => "",
+                'precio-entrada' => "",
+                'total-entrada' => "",
+
+                'cantidad-salida' => "",
+                'precio-salida' => "",
+                'total-salida' => "",
+
+                'cantidad-existencia' => "",
+                'precio-existencia' => "",
+                'total-existencia' => "",
+
+            ];
+
+            $dataGeneral[] = $auxiliar;
+        }
+
+
+        ///inventario incial
+        $auxiliarGeneral = Util::generarKardex($dataGeneral, $rango_inicio, $rango_fin);
+
+
+
+        $articulo = $this->modelarArticulo();
+
+
+
+        $sucursalEmpresa = SucursalEmpresa::find($this->sucursal_empresas_id_seleccionado);
+
+               ///////LEEMOS EL ARRAGLO
+        $abrirPdfPorEmpreas = Util::getAbrirPdfTipoEmpresaSeleccionada();
+
+        ///verificamos si se abrira con la empresa tipo o normal
+        if ($abrirPdfPorEmpreas == "SI") {
+            $ruc = $sucursalEmpresa->empresa->ruc;
+            if (Util::tienePdfDefinidoEmpresa($ruc, 'kardex')) {
+                $nameUrl = "admin.pdf.empresa." . $ruc . ".kardex";
+                //GRUPO ALFA DORADO
+            }
+        }
+
+        ///verificamos para aumentar el tamaño del espacio
+
+
+        $personalPdf = PersonalPdf::where('estado', '=', '1')->where('tipo_opcion', '=', 'Kardex')->where('sucursal_empresas_id', '=', $this->sucursal_empresas_id_seleccionado)->take(3)->get();
+
+
+
+        $name_pdf = "kardex-" . $rango_inicio . ".pdf";
+
+        $data = PDF::loadView($nameUrl, compact(
+
+            'articulo',
+            'sucursalEmpresa',
+            'criterioBusqueda',
+            'personalPdf',
+            'rango_inicio',
+            'rango_fin',
+            'auxiliarGeneral',
+        ));
+
+        
+
+        if (Util::getEstaEnServidor()) {
+            return $data->setPaper('a4', 'portrait')->download($name_pdf);
+        } else {
+            return $data->setPaper('a4', 'landscape')->stream($name_pdf);
+        }
 
 
 

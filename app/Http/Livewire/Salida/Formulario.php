@@ -365,7 +365,7 @@ class Formulario extends Component
         $this->cantidad = null;
         $this->precio_unitario = null;
         $this->articulos_id = null;
-        $this->fecha_salida_detalle = Carbon::now();
+        $this->fecha_salida_detalle = Carbon::now()->format('Y-m-d H:i:s');;
         $this->numero_requerimiento = null;
 
 

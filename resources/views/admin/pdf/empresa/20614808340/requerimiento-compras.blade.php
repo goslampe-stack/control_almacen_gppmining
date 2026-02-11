@@ -4,18 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solicitud de cotizaci&oacute;n </title>
-
+    <title>Requerimiento de compras</title>
     @php
     $marginTop = intval($contadorTotal);
     @endphp
 
     
     <style>
-        * {
+       * {
             margin: 1px;
             padding: 0;
-              font-family: '{{$sucursalEmpresa->tipografia_pdf}}', sans-serif;
+            font-family: '{{$sucursalEmpresa->tipografia_pdf}}', sans-serif;
         }
 
         body {
@@ -29,9 +28,10 @@
 
         .plantilla .main-header {
             background: url({{$sucursalEmpresa->imagen}});
-            background-size: cover;
+            background-size: 100% 200px;
+          background-repeat: no-repeat;
             width: 100%;
-            height: 150px;
+            height: 210px;
             z-index: 100;
             position: absolute;
             top: 0px;
@@ -40,34 +40,27 @@
 
         .informacion {
             width: 100%;
-            margin-top: 110px;
-          /*   margin-left: 1.5rem;
+            margin-top: 170px;
+            text-align: start;
+           /*  margin-left: 1.5rem;
             margin-right: 1.5rem; */
         }
 
         .informacion .ruc {
             width: 100%;
-            text-align: center;
+            text-align: start;
         }
 
-        .informacion .orden {
-            width: 100%;
-        }
-
-        .informacion .orden .left {
-            width: 50%;
-            float: left;
-            text-align: center;
-        }
-
+      .informacion .orden .left,
         .informacion .orden .right {
             width: 50%;
-            float: right;
-            text-align: center;
+            float: left;
+            text-align: start;
         }
 
         .informacion .descripcion {
             width: 100%;
+            text-align: start;
         }
 
         .informacion .descripcion p {
@@ -82,17 +75,17 @@
         }
 
         .tableprincipal .table {
-            margin-left: 0rem;
+            margin-left:0rem;
         }
 
         .tableprincipal table {
             width: 100%;
-            margin-top: {{ $marginTop }}px;
+            margin-top: 365px;
             font-size: 12px;
         }
 
         .tableprincipal table th {
-           background: {{$sucursalEmpresa->colorPdf}};
+             background: {{$sucursalEmpresa->colorPdf}};
             color: #fff;
             padding: 0.3rem 0rem;
             text-transform: uppercase;
@@ -118,22 +111,13 @@
         }
 
         .pie-pagina .firma {
-            width: 120%;
-          /*   margin-left: 1.5rem;
-            margin-right: 1.5rem; */
+            width: 100%;
+            margin-left: 1.5rem;
         }
 
         .pie-pagina .detalle {
             width: 100%;
-           /*  margin-left: 1.5rem;
-            margin-right: 1.5rem; */
-
-        }
-
-        .pie-table {
-            width: 100%;
-          /*   margin-left: 1.5rem;
-            margin-right: 1.5rem; */
+            margin-left: 1.5rem;
         }
 
         .pie-pagina .detalle .left {
@@ -164,8 +148,9 @@
                     <br>
                 </div>
 
+
                 <div class="orden">
-                    <table width="100%" style="table-layout: fixed;">
+                    <table width="100%">
                         <thead>
                             <tr>
                                 <th></th>
@@ -174,66 +159,41 @@
 
                         </thead>
                         <tbody>
-                            <tr>
-                                <td colspan="2">
-                                    <p style="text-align: center;">
-                                        <b>
-                                            SOLICITUD DE COTIZACI&Oacute;N
-                                        </b>
-                                    </p>
-                                </td>
-                            </tr>
-                             <tr>
-                                <td style="padding-top: 20px;"></td>
-                            </tr>
+
                             <tr>
                                 <td>
-                                  <p><b>N° Documento: </b> {{$solicitud->numero_solicitud_cotizacion}}</p>
+                                    <p><b>{{ \App\Models\Util::getMayuscula($sucursalEmpresa->empresa->razon_social) }}</b> <br><span>{{$sucursalEmpresa->nombre_sucursal }}</span><br><br></p>
                                 </td>
-                                <td width="20%">
-                                    <p><b>Fecha: </b> {{ \Carbon\Carbon::parse($solicitud->fecha_solicitud)->format('d/m/Y') }}</p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="padding-top: 15px;"></td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <p style="text-align: center;"><b>DATOS DEL PROVEEDOR</b></p>
-                                </td>
-                            </tr>
-                          
-                           
-                            <tr>
-                                <td colspan="2"><b>Raz&oacute;n social: </b>{{$solicitud->proveedor->razon_social}}</td>
-                               
-                            </tr>
-                            <tr>
-                                <td colspan="2"> <b> RUC: </b>{{$solicitud->proveedor->ruc}}</td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">    <b>Domicilio: </b>{{$solicitud->proveedor->direccion}}</td>
-                              
-                            </tr>
-                           
-                            <tr>
-                                <td colspan="2">  <b>Correo: </b>{{$solicitud->proveedor->correo_electronico}}</td>
-                               
-                            </tr>   
-                             <tr>
-                                <td style="padding-top: 20px;"></td>
-                            </tr>                       
-                            <tr>
-                                <td colspan="2">
-                                    <p >
-                                       Nos dirigimos a su representada empresa para solicitar precios vigentes a la fecha del siguiente
-                                        detalle: 
+                                <td align="right">
+                                    <p>
+                                        <b> REQUERIMIENTO DE COMPRAS</b>
+                                        <br>
+                                        <span>
+                                            N° Requerimiento: {{$requerimiento->numero_requerimiento_compra}}
+                                        </span>
+                                        <br>
+                                        <span>
+                                            Fecha: {{ \Carbon\Carbon::parse($requerimiento->fecha_requerimiento)->format('d/m/Y') }} 
+                                        </span>
                                     </p>
-                                   
+
                                 </td>
-                            </tr>  
+                            </tr>
+
                         </tbody>
                     </table>
+                </div>
+
+
+
+                <div class="descripcion" style="margin-top: 10px;">
+                 
+
+                    <p><b>DIRECCI&Oacute;N DE LA EMPRESA:</b> {{$sucursalEmpresa->direccion}}</p>
+
+                    <p><b>N° DE REQUERIMIENTO INTERNO DE PRODUCTOS:</b> {{$requerimiento->requerimientoPersonal->numero_requerimiento}}</p>
+
+                    <!-- <p style="margin-top: 15px;">Sírvanse por este medio suministrarnos los siguientes artículos</p> -->
                 </div>
             </div>
         </header>
@@ -252,9 +212,9 @@
                 <tbody>
                     @foreach ($articulos as $item)
                     <tr>
-                        <td align="center">{{ $item->articuloSolicitudCotizacion->articuloRequerimiento->articulo->codigo }}</td>
-                        <td align="center">{{ $item->articuloSolicitudCotizacion->articuloRequerimiento->articulo->tipoUnidad->nombre;}}</td>
-                        <td align="center">{{ $item->articuloSolicitudCotizacion->articuloRequerimiento->articulo->articulo }}</td>
+                        <td align="center">{{ $item->articuloRequerimiento->articulo->codigo }}</td>
+                        <td align="center">{{ $item->articuloRequerimiento->articulo->tipoUnidad->nombre;}}</td>
+                        <td align="center">{{ $item->articuloRequerimiento->articulo->articulo }}</td>
                         <td align="center">{{ $item->cantidad }}</td>
                     </tr>
                     @endforeach
@@ -271,23 +231,17 @@
 
 
 
-
-
         <footer class="main-footer">
             <div class="pie-pagina">
                 <div class="detalle center-text">
-
-
-                    
-                    <table width="100%" style="margin-top: 0px;">
+                    <table width="100%">
                         <thead>
 
-                             @foreach ($arregloFirmas as $aux)
+                            @foreach ($arregloFirmas as $aux)
                             <th></th>
                             @endforeach
                         </thead>
                         <tbody>
-
                             <tr>
                                @foreach ($arregloFirmas as $nombre=> $datos)
                                 <td align="center">

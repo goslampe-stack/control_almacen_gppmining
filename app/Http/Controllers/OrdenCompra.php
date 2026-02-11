@@ -189,23 +189,7 @@ class OrdenCompra extends Controller
             $ruc = $sucursalEmpresa->empresa->ruc;
             if (Util::tienePdfDefinidoEmpresa($ruc, 'orden-compra')) {
                 $nameUrl = "admin.pdf.empresa." . $ruc . ".orden-compra";
-                
-                if ($ruc == "20606023996") {
-                    //reducimos porque es menor los pdf a diferencia de lols demas 
-                    $contadorTotal=$contadorTotal-50;
-                }else if ($ruc == "10182040598") {
-                    //reducimos porque es menor los pdf a diferencia de lols demas 
-                    $contadorTotal=$contadorTotal-110;
-                 
-                }else if ($ruc == "20611539798") {
-                    //reducimos porque es menor los pdf a diferencia de lols demas 
-                    $contadorTotal=$contadorTotal-50;
-                    
-                }else if ($ruc == "10452703675") {
-                    //reducimos porque es menor los pdf a diferencia de lols demas 
-                    $contadorTotal=$contadorTotal+25;
-                    
-                }
+
             }
         }
 

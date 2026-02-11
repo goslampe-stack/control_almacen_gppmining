@@ -70,6 +70,14 @@
                                         @error('numero_orden_compra')<span class="text-danger small">{{$message}}</span> @enderror
                                     </div>
                                 </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="cotizacion_proveedor" style="margin-bottom: 0px;">N&uacute;mero de cotizaci&oacute;n proveedor</label><br>
+                                        <span class="small">Agregue el n&uacute;mero de documento </span>
+                                        <input type="text" class="form-control apl-input-border" wire:model="cotizacion_proveedor">
+                                        @error('cotizacion_proveedor')<span class="text-danger small">{{$message}}</span> @enderror
+                                    </div>
+                                </div>
                                 
                                 
                                   <div class="col-md-6">

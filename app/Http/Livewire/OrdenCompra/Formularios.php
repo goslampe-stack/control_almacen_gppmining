@@ -23,7 +23,7 @@ use Livewire\WithPagination;
 class Formularios extends Component
 {
     use WithPagination;
-    public $numero_orden_compra, $fecha_pedido, $sucursal_empresas_id, $articuloRequerimientoPersonal, $numero_requerimiento_personal,  $fecha_estimada_pago, $serie_documento, $proveedors_ruc_id, $elaboradoPor_id, $terminos_de_entrega, $tipo_documento, $numero_documento, $estado, $solicitud_cotizacions_id, $proveedors_id, $descripcion_solicitamos;
+    public $numero_orden_compra, $fecha_pedido,$cotizacion_proveedor, $sucursal_empresas_id, $articuloRequerimientoPersonal, $numero_requerimiento_personal,  $fecha_estimada_pago, $serie_documento, $proveedors_ruc_id, $elaboradoPor_id, $terminos_de_entrega, $tipo_documento, $numero_documento, $estado, $solicitud_cotizacions_id, $proveedors_id, $descripcion_solicitamos;
     protected $listeners = ['crear_RP', 'editar_RP', 'selectedProveedorItem', 'selectedElaboradoPorItem', 'selectedProveedorRucItem',  'selectedRequerimientoPersonalItem'];
     public $modelId, $UsuarioGeneralIngresado;
 
@@ -93,7 +93,7 @@ class Formularios extends Component
 
 
 
-   
+
 
 
     public $opciones_perPage = [
@@ -367,7 +367,8 @@ class Formularios extends Component
             'numero_orden_compra' => $this->numero_orden_compra,
             'fecha_pedido' => $this->fecha_pedido,
             'fecha_estimada_pago' => $this->fecha_estimada_pago,
-            'personalpdf' => json_encode(Util::getPersonalPdf($this->sucursal_empresas_id_seleccionado,Util::$OPCION_ORDEN_COMPRA)),
+            'cotizacion_proveedor' => $this->cotizacion_proveedor,
+            'personalpdf' => json_encode(Util::getPersonalPdf($this->sucursal_empresas_id_seleccionado, Util::$OPCION_ORDEN_COMPRA)),
             'elaboradoPor_id' => $this->elaboradoPor_id,
             'terminos_de_entrega' => $this->terminos_de_entrega,
             'descripcion_solicitamos' => $this->descripcion_solicitamos,
@@ -425,7 +426,7 @@ class Formularios extends Component
 
         DB::beginTransaction(); //Iniciamos la reansaccion
         try {
-     
+
 
             OrdenDeCompra::find($this->modelId)->update($this->modelData_RP());
 
@@ -451,6 +452,7 @@ class Formularios extends Component
         $this->numero_orden_compra = $data->numero_orden_compra;
 
         $this->fecha_estimada_pago = $data->fecha_estimada_pago;
+        $this->cotizacion_proveedor = $data->cotizacion_proveedor;
 
         $this->terminos_de_entrega = $data->terminos_de_entrega;
         $this->descripcion_solicitamos = $data->descripcion_solicitamos;
@@ -477,10 +479,11 @@ class Formularios extends Component
 
     public function resetVars_RP()
     {
-
+        date_default_timezone_set('America/Lima');
         $this->numero_orden_compra = null;
         $this->fecha_pedido = null;
         $this->fecha_estimada_pago = null;
+        $this->cotizacion_proveedor = null;
         $this->terminos_de_entrega = null;
         $this->descripcion_solicitamos = null;
         $this->solicitud_cotizacions_id = null;
@@ -557,7 +560,7 @@ class Formularios extends Component
 
     public function resetVars_ARP()
     {
-
+        date_default_timezone_set('America/Lima');
         $this->codigo = null;
         $this->articulo = null;
         $this->cantidad = null;

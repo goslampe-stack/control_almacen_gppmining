@@ -121,8 +121,6 @@ class SalidaArticulos extends Controller
 
 
 
-
-
         $articulos = SalidaDetalle::where('salidas_id', '=', $modeloId)
             ->orderBy('id', 'asc')->get();
 
@@ -139,18 +137,41 @@ class SalidaArticulos extends Controller
 
         $sucursalEmpresa = SucursalEmpresa::find($this->sucursal_empresas_id_seleccionado);
 
+         ///////LEEMOS EL ARRAGLO
+        $abrirPdfPorEmpreas = Util::getAbrirPdfTipoEmpresaSeleccionada();
+
+        ///verificamos si se abrira con la empresa tipo o normal
+        if ($abrirPdfPorEmpreas == "SI") {
+            $ruc = $sucursalEmpresa->empresa->ruc;
+            if (Util::tienePdfDefinidoEmpresa($ruc, 'salida-articulos')) {
+                $nameUrl = "admin.pdf.empresa." . $ruc . ".salida-articulos";
+                //GRUPO ALFA DORADO
+            }
+        }
+
+        ///verificamos para aumentar el tamaño del espacio
+
+
         $personalPdf = PersonalPdf::where('estado', '=', '1')->where('tipo_opcion', '=', 'Salida')->where('sucursal_empresas_id', '=', $this->sucursal_empresas_id_seleccionado)->take(3)->get();
 
 
 
         $name_pdf = "Salida-N°.pdf";
-        return PDF::loadView('admin.pdf.salida', compact(
+        $data= PDF::loadView($nameUrl, compact(
             'sucursalEmpresa',
             'salida',
             'formato_numero_serie',
             'personalPdf',
             'articulos',
-        ))->setPaper('a4', 'portrait')->download($name_pdf);
+        ));
+
+
+        
+        if (Util::getEstaEnServidor()) {
+            return $data->setPaper('a4', 'portrait')->download($name_pdf);
+        } else {
+            return $data->stream($name_pdf);
+        }
 
 
 

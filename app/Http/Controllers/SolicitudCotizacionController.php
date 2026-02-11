@@ -164,19 +164,7 @@ class SolicitudCotizacionController extends Controller
         if ($abrirPdfPorEmpreas == "SI") {
             $ruc = $sucursalEmpresa->empresa->ruc;
             if (Util::tienePdfDefinidoEmpresa($ruc, 'solicitud-cotizacion')) {
-                $nameUrl = "admin.pdf.empresa." . $ruc . ".solicitud-cotizacion";
-                if ($ruc == "10452703675") {
-                    $contadorTotal = $contadorTotal + 50;
-                } else if ($ruc == "20611539798") {
-                    //reducimos porque es menor los pdf a diferencia de lols demas 
-                    $contadorTotal = $contadorTotal - 50;
-                } else if ($ruc == "20606023996") {
-                    //reducimos porque es menor los pdf a diferencia de lols demas 
-                   /*  $contadorTotal = $contadorTotal+20 ; */
-                }else if ($ruc == "10182040598") {
-                    //reducimos porque es menor los pdf a diferencia de lols demas 
-                    $contadorTotal = $contadorTotal - 10;
-                }
+                $nameUrl = "admin.pdf.empresa." . $ruc . ".solicitud-cotizacion";               
             }
         }
 

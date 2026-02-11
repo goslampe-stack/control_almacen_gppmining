@@ -55,10 +55,10 @@ class Principal extends Component
 
         $this->fecha_inicio = Carbon::now()->subDays(30)->format('Y-m-d');
         $this->fecha_fin = Carbon::now()->format('Y-m-d');
-        
-          //VERIFICAMOS SI TIENE PERMISOS
 
-          if (!Util::tienePermiso(Util::$OPCION_SOLICITUD_DE_COTIZACION)) {
+        //VERIFICAMOS SI TIENE PERMISOS
+
+        if (!Util::tienePermiso(Util::$OPCION_SOLICITUD_DE_COTIZACION)) {
             return redirect()->route('dashboard');
         }
     }
@@ -81,7 +81,12 @@ class Principal extends Component
 
         foreach ($datas as $indez => $item) {
             $auxFechaItem = Carbon::parse($item->fecha_solicitud);
-            if ($auxFechaItem->greaterThanOrEqualTo($carbonFechaInicio) && $auxFechaItem->lessThanOrEqualTo($carbonFechaFin)) {
+            /*  if ($auxFechaItem->greaterThanOrEqualTo($carbonFechaInicio) && $auxFechaItem->lessThanOrEqualTo($carbonFechaFin)) {
+            } else {
+                unset($datas[$indez]);
+            } */
+
+            if ($auxFechaItem->between($carbonFechaInicio->startOfDay(), $carbonFechaFin->endOfDay())) {
             } else {
                 unset($datas[$indez]);
             }
@@ -134,10 +139,10 @@ class Principal extends Component
 
     public function crear()
     {
-         try { 
+        try {
             $this->emit('crear_RP');
         } catch (\Exception $e) {
-        } 
+        }
     }
 
     public function editar_RP($id)
@@ -178,10 +183,10 @@ class Principal extends Component
                 Util::geterrordefine($this, "La solicitud de cotización ya esta en uso en orden de compras");
             } else {
 
-                  //actualizamos ahora el requerimiento de personal
+                //actualizamos ahora el requerimiento de personal
 
-                  foreach ($this->selectedItemsTable as $item) {
-                    $data = RequerimientoCompra::where('solicitudCotizacion_id', '=' , $item)->get();
+                foreach ($this->selectedItemsTable as $item) {
+                    $data = RequerimientoCompra::where('solicitudCotizacion_id', '=', $item)->get();
                     foreach ($data as $aux) {
                         $aux->estado = 1;
                         $aux->solicitudCotizacion_id = "";
@@ -198,13 +203,11 @@ class Principal extends Component
                         $a->update();
                     }
 
-                     //volvemos a estado normal articulo solicitud de cotizacion
-                     $aux = ArticuloSolicitudCotizacion::where('solicitudCotizacions_id', '=', $item)->get();
-                     foreach ($aux as $a) {
-                         $a->delete();
-                     }
-
-
+                    //volvemos a estado normal articulo solicitud de cotizacion
+                    $aux = ArticuloSolicitudCotizacion::where('solicitudCotizacions_id', '=', $item)->get();
+                    foreach ($aux as $a) {
+                        $a->delete();
+                    }
                 }
 
                 SolicitudCotizacion::destroy($this->selectedItemsTable);
@@ -216,7 +219,6 @@ class Principal extends Component
             $this->dispatchBrowserEvent('closeDeleteModal');
 
             DB::commit();
-        
         } catch (\Exception $e) {
             Util::geterrorSistem($this);
 

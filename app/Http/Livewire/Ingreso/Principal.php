@@ -100,7 +100,7 @@ class Principal extends Component
     }
     public function render()
     {
-        return view('livewire.ingreso.principal', ['data' => $this->modelarDatos(), 'fecha_ingresos' => $this->modelarFechaArticuloOrdenCompra()]);
+        return view('livewire.ingreso.principal', ['data' => $this->modelarDatos()]);
     }
 
     public function modelarFechaArticuloOrdenCompra()
@@ -135,13 +135,18 @@ class Principal extends Component
     {
 
         $datas = Ingreso::search($this->search, $this->filtrarPorEstado, $this->sucursal_empresas_id_seleccionado)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->simplePaginate($this->perPage);
+
+        
         $carbonFechaInicio = Carbon::parse($this->fecha_inicio);
         $carbonFechaFin = Carbon::parse($this->fecha_fin);
 
+
+        
+
         foreach ($datas as $indez => $item) {
-            $auxFechaItem = Carbon::parse($item->fecha_ingreso);
-            if ($auxFechaItem->greaterThanOrEqualTo($carbonFechaInicio) && $auxFechaItem->lessThanOrEqualTo($carbonFechaFin)) {
-            } else {
+            $auxFechaItem = Carbon::parse($item->fecha_ingreso);            
+            if ($auxFechaItem->between($carbonFechaInicio->startOfDay(),$carbonFechaFin->endOfDay())) {
+            } else {                
                 unset($datas[$indez]);
             }
         }

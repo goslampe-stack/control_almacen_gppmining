@@ -85,8 +85,13 @@ class Principal extends Component
 
         foreach ($datas as $indez => $item) {
             $auxFechaItem = Carbon::parse($item->fecha_requerimiento);
-            if ($auxFechaItem->greaterThanOrEqualTo($carbonFechaInicio) && $auxFechaItem->lessThanOrEqualTo($carbonFechaFin)) {
+           /*  if ($auxFechaItem->greaterThanOrEqualTo($carbonFechaInicio) && $auxFechaItem->lessThanOrEqualTo($carbonFechaFin)) {
             } else {
+                unset($datas[$indez]);
+            } */
+
+                if ($auxFechaItem->between($carbonFechaInicio->startOfDay(),$carbonFechaFin->endOfDay())) {
+            } else {                
                 unset($datas[$indez]);
             }
         }

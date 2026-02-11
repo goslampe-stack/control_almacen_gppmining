@@ -31,9 +31,10 @@
 
         .plantilla .main-header {
             background: url({{$sucursalEmpresa->imagen}});
-            background-size: cover;
+         background-size: 100% 200px;
+          background-repeat: no-repeat;
             width: 100%;
-            height: {{ $alturaEmcabezado }}px;
+            height: 210px;
             z-index: 100;
             position: absolute;
             top: 0px;
@@ -42,7 +43,7 @@
 
         .informacion {
             width: 100%;
-            margin-top: 110px;
+            margin-top: 160px;
          /*    margin-left: 1.5rem;
             margin-right: 1.5rem; */
         }
@@ -89,8 +90,7 @@
 
         .tableprincipal table {
             width: 100%;
-
-            margin-top: {{ $marginTop }}px;
+            margin-top: 365px;
             font-size: 12px;
         }
 

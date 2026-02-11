@@ -127,6 +127,7 @@
                                                     <td width="3%"></td>
                                                     <td  class="text-center">N° Orden Compra</td>
                                                     <td class="text-center"> N° Solicitud</td>
+                                                    <td class="text-center"> N° Cotizaci&oacute;n proveedor</td>
                                                     <td  class="text-center">Fecha de Pedido</td>
                                                     <td class="text-center" >Proveedor</td>
                                                     <td class="text-center">Estado</td>
@@ -143,6 +144,7 @@
                                                     @if(\App\Models\Util::checkPermission('orden-compra-edit'))
                                                     <td class="text-center">{{ $item->numero_orden_compra }}</td>
                                                     <td class="text-center">{{ $item->solicitudCotizacion->numero_solicitud_cotizacion }}</td>
+                                                    <td class="text-center">{{ $item->cotizacion_proveedor }}</td>
                                                     <td class="text-center"> {{\Carbon\Carbon::parse($item->fecha_pedido)->format('d-m-Y')}}</td>
                                                     <td > {{ \App\Models\Util::getCantidadLetras($item->proveedor->razon_social ,70)}}</td>
                                                     <td class="text-center">

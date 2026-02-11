@@ -26,19 +26,53 @@ class Util extends Model
         return "SI";
     }
 
+
+    public const  RUC_GRUPO_ALFA_DORADO = "20614808340";
+    public const  RUC_GPP_MINING = "20615159418";
+
     public static function tienePdfDefinidoEmpresa($ruc, $name)
     {
 
         $estado = "NO";
-        ///brillo del chamuco
-        if ($ruc == "20611539798" && $name == "orden-compra") {
+
+
+        /////GRUPO ALFA DORADO
+        if ($ruc == Util::RUC_GRUPO_ALFA_DORADO && $name == "orden-compra") {
             $estado = "SI";
-        } else if ($ruc == "20611539798" && $name == "requerimiento-personal") {
+        } else if ($ruc == Util::RUC_GRUPO_ALFA_DORADO && $name == "requerimiento-personal") {
             $estado = "SI";
-        } else if ($ruc == "20611539798" && $name == "solicitud-cotizacion") {
+        } else if ($ruc == Util::RUC_GRUPO_ALFA_DORADO && $name == "solicitud-cotizacion") {
+            $estado = "SI";
+        } else if ($ruc == Util::RUC_GRUPO_ALFA_DORADO && $name == "requerimiento-compras") {
+            $estado = "SI";
+        } else if ($ruc == Util::RUC_GRUPO_ALFA_DORADO && $name == "ingreso-articulos") {
+            $estado = "SI";
+        } else if ($ruc == Util::RUC_GRUPO_ALFA_DORADO && $name == "salida-articulos") {
+            $estado = "SI";
+        } else if ($ruc == Util::RUC_GRUPO_ALFA_DORADO && $name == "kardex") {
             $estado = "SI";
         }
-        ///brillo del chamuco
+        /////GRUPO ALFA DORADO
+
+        /////RUC_GPP_MINING
+        if ($ruc == Util::RUC_GPP_MINING && $name == "orden-compra") {
+            $estado = "SI";
+        } else if ($ruc == Util::RUC_GPP_MINING && $name == "requerimiento-personal") {
+            $estado = "SI";
+        } else if ($ruc == Util::RUC_GPP_MINING && $name == "solicitud-cotizacion") {
+            $estado = "SI";
+        } else if ($ruc == Util::RUC_GPP_MINING && $name == "requerimiento-compras") {
+            $estado = "SI";
+        } else if ($ruc == Util::RUC_GPP_MINING && $name == "ingreso-articulos") {
+            $estado = "SI";
+        } else if ($ruc == Util::RUC_GPP_MINING && $name == "salida-articulos") {
+            $estado = "SI";
+         } else if ($ruc == Util::RUC_GRUPO_ALFA_DORADO && $name == "kardex") {
+            $estado = "SI";
+        }
+        /////GRUPO ALFA DORADO
+
+
         //arteaga        
         if ($ruc == "10452703675" && $name == "orden-compra") {
             $estado = "SI";
@@ -54,18 +88,18 @@ class Util extends Model
             $estado = "SI";
         } else if ($ruc == "20606023996" && $name == "solicitud-cotizacion") {
             $estado = "SI";
-        }else if ($ruc == "20606023996" && $name == "orden-compra") {
+        } else if ($ruc == "20606023996" && $name == "orden-compra") {
             $estado = "SI";
         }
         //arteaga 
 
         //piedra azul    
-        
+
         if ($ruc == "10182040598" && $name == "solicitud-cotizacion") {
             $estado = "SI";
         } else if ($ruc == "10182040598" && $name == "orden-compra") {
             $estado = "SI";
-        }else if ($ruc == "10182040598" && $name == "requerimiento-personal") {
+        } else if ($ruc == "10182040598" && $name == "requerimiento-personal") {
             $estado = "SI";
         }
         //piedra azul       
@@ -529,10 +563,10 @@ class Util extends Model
         $auxiliar = [
             'nombre' => 'Inventario-inicial',
             'estado' => 'false',
-            'articulo' => "Inventario Incial",
+            'articulo' => "Inventario Inicial",
             'cantidad' => "0",
-            'fecha' => "2019-06-17",
-            'auxo' => "2019-06-17",
+            'fecha' => "2024-06-17",
+            'auxo' => "2024-06-17",
             'precio' => "0",
             'cantidad-entrada' => "",
             'precio-entrada' => "",
@@ -707,7 +741,7 @@ class Util extends Model
         if ($iniciak != null) {
             $auxiliar = [
                 'nombre' => 'Inventario-inicial',
-                'articulo' => "Inventario Incial",
+                'articulo' => "Inventario Inicial",
                 'cantidad' => $iniciak['cantidad-existencia'],
                 'fecha' => $iniciak['fecha'],
                 'auxo' => $iniciak['fecha'],
@@ -731,7 +765,7 @@ class Util extends Model
         } else {
             $auxiliar = [
                 'nombre' => 'Inventario-inicial',
-                'articulo' => "Inventario Incial",
+                'articulo' => "Inventario Inicial",
                 'cantidad' => "0",
                 'fecha' => "2019-06-17",
                 'auxo' => "2019-06-17",

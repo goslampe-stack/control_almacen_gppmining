@@ -55,6 +55,7 @@ class RequerimientoPersonal extends Controller
         $sumaTotalDobleLinea = $sumaTotalDobleLinea + Util::obtenerTotalLineaPdfParaArriba(79, $contadorTotal2);
 
         $contadorTotal = 0;
+        $alturaEmcabezado = 150;
 
         if ($sumaTotalDobleLinea == 2) {
             $contadorTotal = 280;
@@ -89,18 +90,12 @@ class RequerimientoPersonal extends Controller
             $ruc = $sucursalEmpresa->empresa->ruc;
             if (Util::tienePdfDefinidoEmpresa($ruc, 'requerimiento-personal')) {
                 $nameUrl = "admin.pdf.empresa." . $ruc . ".requerimiento-personal";
-                //ARTEAFA
-                if ($ruc == "10452703675") {
-                    $contadorTotal=$contadorTotal+90;
+                //GRUPO ALFA DORADO
+               
+                if ($ruc == Util::RUC_GRUPO_ALFA_DORADO) {
+                    $alturaEmcabezado=$alturaEmcabezado+65;
                 }
-                //ARTEAFA
-                 if ($ruc == "20606023996") {
-                    $contadorTotal=$contadorTotal+60;
-                }
-                //JUARES
-                 if ($ruc == "10182040598") {
-                    $contadorTotal=$contadorTotal+50;
-                }
+                
             }
         }
 
@@ -114,6 +109,7 @@ class RequerimientoPersonal extends Controller
             'sucursalEmpresa',
             'data',
             'contadorTotal',
+            'alturaEmcabezado',
             'arregloFirmas',
         ));
 

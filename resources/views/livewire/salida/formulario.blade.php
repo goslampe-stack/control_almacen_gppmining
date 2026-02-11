@@ -222,6 +222,14 @@
                                         @error('numero_requerimiento')<span class="text-danger small">{{$message}}</span> @enderror
                                     </div>
                                 </div> 
+                               <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="fecha_salida_detalle" style="margin-bottom: 0px;">Fecha y Hora de salida</label><br>
+                                        <span class="small">Agregue el N° requerimiento</span>
+                                        <input type="datetime-local" class="form-control apl-input-border" wire:model="fecha_salida_detalle">
+                                        @error('fecha_salida_detalle')<span class="text-danger small">{{$message}}</span> @enderror
+                                    </div>
+                                </div> 
                               
                             </div>
 

@@ -72,18 +72,24 @@ class Principal extends Component
     {
 
         $datas = OrdenDeCompra::search($this->search, $this->filtrarPorEstado, $this->sucursal_empresas_id_seleccionado)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->simplePaginate($this->perPage);
-        
+
         $carbonFechaInicio = Carbon::parse($this->fecha_inicio);
         $carbonFechaFin = Carbon::parse($this->fecha_fin);
 
         foreach ($datas as $indez => $item) {
             $auxFechaItem = Carbon::parse($item->fecha_pedido);
-            if ($auxFechaItem->greaterThanOrEqualTo($carbonFechaInicio) && $auxFechaItem->lessThanOrEqualTo($carbonFechaFin)) {
+
+            /*  if ($auxFechaItem->greaterThanOrEqualTo($carbonFechaInicio) && $auxFechaItem->lessThanOrEqualTo($carbonFechaFin)) {
+            } else {
+                unset($datas[$indez]);
+            } */
+
+            if ($auxFechaItem->between($carbonFechaInicio->startOfDay(), $carbonFechaFin->endOfDay())) {
             } else {
                 unset($datas[$indez]);
             }
         }
-       
+
 
 
         return $datas;

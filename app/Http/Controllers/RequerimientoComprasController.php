@@ -87,14 +87,28 @@ class RequerimientoComprasController extends Controller
         }
         ///////LEEMOS EL ARRAGLO
         $arregloFirmas = json_decode($requerimiento->personalpdf, true);
-         if($arregloFirmas==null){
-            $arregloFirmas=[];
+        if ($arregloFirmas == null) {
+            $arregloFirmas = [];
         }
         ///////LEEMOS EL ARRAGLO
+        $abrirPdfPorEmpreas = Util::getAbrirPdfTipoEmpresaSeleccionada();
+
+        ///verificamos si se abrira con la empresa tipo o normal
+        if ($abrirPdfPorEmpreas == "SI") {
+            $ruc = $sucursalEmpresa->empresa->ruc;
+            if (Util::tienePdfDefinidoEmpresa($ruc, 'requerimiento-compras')) {
+                $nameUrl = "admin.pdf.empresa." . $ruc . ".requerimiento-compras";
+                //GRUPO ALFA DORADO
+            }
+        }
+
+        ///verificamos para aumentar el tamaño del espacio
+
+
 
 
         $name_pdf = "Requerimiento-de-compras-N°-" . $requerimiento->numero_requerimiento_compra . ".pdf";
-        return PDF::loadView('admin.pdf.requerimiento-compras', compact(
+        $data = PDF::loadView($nameUrl, compact(
             'requerimiento',
             'costoTotal',
             'sucursalEmpresa',
@@ -102,7 +116,15 @@ class RequerimientoComprasController extends Controller
             'articulos',
             'personalPdf',
             'contadorTotal',
-        ))->setPaper('a4', 'portrait')->download($name_pdf);
+        ));
+
+
+        if (Util::getEstaEnServidor()) {
+            return $data->setPaper('a4', 'portrait')->download($name_pdf);
+        } else {
+            return $data->stream($name_pdf);
+        }
+
 
         /*  $data = PDF::loadView('admin.pdf.requerimiento-compras', compact(
             'requerimiento',
