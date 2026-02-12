@@ -7,6 +7,7 @@
     <title>Salida</title>
 	<link rel="icon" type="image/png" href="{{ asset('dist/img/goslam_viajes.jpg') }}" />
 
+   <!--  asdas -->
     <style>
        * {
             margin: 1px;
