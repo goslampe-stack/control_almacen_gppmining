@@ -71,15 +71,15 @@
 
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label for="destinatario_id" style="margin-bottom: 0px;">Destinatario</label><br>
+                                        <label for="destinatarios_id" style="margin-bottom: 0px;">Destinatario</label><br>
                                         <span class="small">Eligir Destinatario </span>
-                                        <select class="form-control apl-input-border demo-default" id="destinatario_id" wire:model="destinatario_id" style="width: 100%;">
+                                        <select class="form-control apl-input-border demo-default" id="destinatarios_id" wire:model="destinatarios_id" style="width: 100%;">
                                             <option value="">{{__('Selecciona Destinatario')}}</option>
                                             @foreach($personal as $item)
                                             <option value="{{ $item->id }}">{{ $item->apellidos }}, {{ $item->nombre }} [{{ $item->tipoPersonal->nombre }}]</option>
                                             @endforeach
                                         </select>
-                                        @error('destinatario_id')<span class="text-danger">{{$message}}</span> @enderror
+                                        @error('destinatarios_id')<span class="text-danger">{{$message}}</span> @enderror
                                     </div>
                                 </div>
 
@@ -364,13 +364,13 @@
 
         /* SELECT 2 PARA CATEGORIA PRODUCTO */
         window.initSelectPersonalDrop = () => {
-            $('#destinatario_id').select2({
+            $('#destinatarios_id').select2({
                 placeholder: '{{ __("Seleccione el Destinatario") }}',
                 allowClear: true
             });
         }
         initSelectPersonalDrop();
-        $('#destinatario_id').on('change', function(e) {
+        $('#destinatarios_id').on('change', function(e) {
             livewire.emit('selectedDestinarioItem', e.target.value)
         });
         window.livewire.on('select2Destinartario', () => {

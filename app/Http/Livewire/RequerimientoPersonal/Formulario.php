@@ -25,7 +25,7 @@ use Livewire\WithPagination;
 class Formulario extends Component
 {
     use WithPagination;
-    public $nombre, $codigo, $estado,$listaPersonal, $articulo, $sucursal_empresas_id, $personals_id,$destinatario_id, $numero_requerimiento, $descripcion, $fecha_pedido, $stock_disnponible_articulo_requerimiento;
+    public $nombre, $codigo, $estado,$listaPersonal, $articulo, $sucursal_empresas_id, $personals_id,$destinatarios_id, $numero_requerimiento, $descripcion, $fecha_pedido, $stock_disnponible_articulo_requerimiento;
     protected $listeners = ['crear_RP', 'editar_RP', 'selectedPersonalItem','selectedDestinarioItem', 'selectedArticuloItem'];
     public $modelId;
 
@@ -81,7 +81,7 @@ class Formulario extends Component
     public function selectedDestinarioItem($item)
     {
         if ($item) {
-            $this->destinatario_id = $item;
+            $this->destinatarios_id = $item;
         }
     }
 
@@ -353,7 +353,7 @@ class Formulario extends Component
             'personalpdf' =>json_encode( Util::getPersonalPdf($this->empresa_id_seleccionado,Util::$OPCION_REQUERIMIENTO_PERSONAL)),
             'users_id' => Auth::user()->id,
             'personals_id' => $this->personals_id,
-            'destinatario_id' => $this->destinatario_id,
+            'destinatarios_id' => $this->destinatarios_id,
             'estado' => $this->getEstadoNumero(),
             'sucursal_empresas_id' => Util::getSucursalEmpresaIdLocalStorage(),
         ];
@@ -397,7 +397,7 @@ class Formulario extends Component
         $this->nombre = $data->nombre;
         $this->sucursal_empresas_id = $data->sucursal_empresas_id;
         $this->personals_id = $data->personals_id;
-        $this->destinatario_id = $data->destinatario_id;
+        $this->destinatarios_id = $data->destinatarios_id;
         $this->numero_requerimiento = $data->numero_requerimiento;
         $this->descripcion = $data->descripcion;
         $this->fecha_pedido = $data->fecha_pedido;
@@ -414,7 +414,7 @@ class Formulario extends Component
         $this->estado = 'Activo';
         $this->sucursal_empresas_id = null;
         $this->personals_id = null;
-        $this->destinatario_id = null;
+        $this->destinatarios_id = null;
         $this->numero_requerimiento = null;
         $this->descripcion = "";
 
