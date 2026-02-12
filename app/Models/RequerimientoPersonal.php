@@ -29,6 +29,10 @@ class RequerimientoPersonal extends Model
     {
         return $this->belongsTo(Personal::class, 'personals_id');
     }
+    public function destinatario()
+    {
+        return $this->belongsTo(Personal::class, 'destinatario_id');
+    }
     public function sucursal()
     {
         return $this->belongsTo(SucursalEmpresa::class, 'sucursal_empresas_id');

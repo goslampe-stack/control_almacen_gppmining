@@ -4,15 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Requerimiento internos de productos</title>
+    <title>Solicitud de cotizaci&oacute;n </title>
 
     @php
     $marginTop = intval($contadorTotal);
-    $alturaEmcabezado = intval($alturaEmcabezado);
     @endphp
 
-
-    <style>
+    
+       <style>
         * {
             margin: 1px;
             font-size: 12px;
@@ -178,13 +177,10 @@
     <div class="plantilla">
         <header class="main-header">
             <div class="informacion">
-             <!--    <div class="ruc">
-                    <h3>&nbsp;</h3>
-                    <br>
-                </div> -->
+                
 
-                    <div class="orden">
-                    <table width="100%">
+                <div class="orden">
+                          <table width="100%">
                         <thead>
                             <tr>
                                 <th></th>
@@ -201,10 +197,10 @@
                                  </td>
                                 <td align="right">
                                     <p>
-                                        <b> REQUERIMIENTO DE ALMACEN</b>
+                                        <b> REQUERIMIENTO DE COTIZACI&Oacute;N</b>
                                         <br>                                      
                                         <span>
-                                            N°: {{$requerimiento->numero_requerimiento}}
+                                            N°: {{$solicitud->numero_solicitud_cotizacion}}
                                         </span>
                                         <br>
                                                                             
@@ -216,9 +212,7 @@
                         </tbody>
                     </table>
 
-
-
-                    <table width="100%">
+                             <table width="100%">
                         <thead>
                             <tr>
                                 <th></th>
@@ -246,7 +240,7 @@
                                        
                                      
                                         <span>
-                                            Fecha de pedido: {{$requerimiento->fecha_pedido}}
+                                            Fecha de pedido: {{ \Carbon\Carbon::parse($solicitud->fecha_solicitud)->format('d/m/Y') }}
                                         </span>                                     
                                          <br>
                                         <span>
@@ -261,62 +255,114 @@
                         </tbody>
                     </table>
 
-                     <div class="tablePrimerTable">
-                    <table  class="table">
+
+                    <table width="100%">
                         <thead>
                             <tr>
-                                <th style="width: 50%;">DESTINARIO</th>
-                                <th style="width: 50%;"></th>
+                                <th></th>
+                                <th></th>
                             </tr>
 
                         </thead>
                         <tbody>
-                      
 
                             <tr>
-
-                                <td style="width: 50%; vertical-align: top;">
-
-                                  <span>
-                                        <b> {{$requerimiento->destinatario->apellidos}}, {{$requerimiento->destinatario->nombre}}</b>  
-
-                                    </span><br>
-                                    <span>
-                                        <b> {{$requerimiento->destinatario->tipo_documento}}: </b> {{$requerimiento->destinatario->numero_documento}}
-
-                                    </span><br>
-                                    <span>
-                                        <b> &Aacute;REA: </b> COMPRAS
-
-                                    </span><br>
-                                 
-                                    <span>
-                                        <b> Email: </b> {{$requerimiento->destinatario->correo_electronico}}
-
-                                    </span><br>
+                                <td>
+                                    <p><b>{{ \App\Models\Util::getMayuscula($sucursalEmpresa->empresa->razon_social) }}</b> <br><span>{{$sucursalEmpresa->nombre_sucursal }}</span><br><br></p>
+                                </td>
+                                <td align="right">
+                                    <p>
+                                        <b> SOLICITUD DE COTIZACI&Oacute;N</b>
+                                        <br>
+                                        <span>
+                                            N° requerimiento interno: {{$solicitud->requerimientoCompras->requerimientoPersonal->numero_requerimiento}}
+                                        </span>
+                                        <br>
+                                        <span>
+                                            N° solicitud: {{$solicitud->numero_solicitud_cotizacion}}
+                                        </span>
+                                        <br>
+                                        <span>
+                                            Fecha: {{ \Carbon\Carbon::parse($solicitud->fecha_solicitud)->format('d/m/Y') }}
+                                        </span>
+                                    </p>
 
                                 </td>
-
-                                <td style="width: 50%; vertical-align: middle;" >
-
-                                    <span>
-                                        <b> Los productos solicitados son para uso en mina</b>  
-
-                                    </span><br>
-                                   
-                                </td>
-                             
-
                             </tr>
 
                         </tbody>
                     </table>
                 </div>
+
+                <div>
+                    <table width="100%">
+                        <thead>
+                            <tr>
+                                <th style="width: 50%;"></th>
+                                <th style="width: 50%;"></th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td style="width: 50%;"> <span><b>CLIENTE</b></span><br></td>
+                                <td style="width: 50%;"> <span><b>PROVEEDOR</b></span><br></td>
+
+
+                            </tr>
+
+                            <tr>
+                                <td style="width: 50%;vertical-align: top;">
+
+
+                                    <span>
+                                        <b>Raz&oacute;n social: </b>{{$sucursalEmpresa->empresa->razon_social}}
+
+                                    </span><br>
+                                    <span>
+                                        <b> RUC: </b>{{$sucursalEmpresa->empresa->ruc}}
+
+                                    </span><br>
+                                    <span>
+                                        <b>Domicilio Fiscal: </b>{{$sucursalEmpresa->direccion}}
+
+                                    </span><br>
+                                    <span>
+                                        <b>Email: </b>{{$sucursalEmpresa->empresa->correo_electronico}}
+
+                                    </span><br>
+
+                                </td>
+                                <td style="width: 50%;  vertical-align: top;">
+
+
+                                    <span>
+                                        <b> Raz&oacute;n social: </b>{{$solicitud->proveedor->razon_social}}
+
+                                    </span><br>
+                                    <span>
+                                        <b> RUC: </b>{{$solicitud->proveedor->ruc}}
+
+                                    </span><br>
+
+                                    <span>
+                                        <b> Email: </b> {{$solicitud->proveedor->correo_electronico}}
+
+                                    </span><br>
+                                  
+                                    
+
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
                 </div>
 
-
-
-               
+                <div class="descripcion">
+                    <p style="margin-top: 15px;">  Solicitamos tenga a bien cotizarnos los productos requeridos lineas abajo, por ser necesario para nuestras operaci&oacute;nes.</p>
+                </div>
             </div>
         </header>
 
@@ -325,60 +371,72 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Código</th>
+                        <th>C&oacute;digo</th>
+                        <th>Unidad</th>
                         <th>Artículo</th>
-                        <th>Tipo unidad</th>
                         <th>Cantidad</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($data as $item)
+                    @foreach ($articulos as $item)
                     <tr>
-                        <td align="center">{{ $item->articulo->codigo }}</td>
-                        <td align="center">{{ $item->articulo->articulo }} </td>
-                        <td align="center">{{ $item->articulo->tipoUnidad->nombre }}</td>
+                        <td align="center">{{ $item->articuloSolicitudCotizacion->articuloRequerimiento->articulo->codigo }}</td>
+                        <td align="center">{{ $item->articuloSolicitudCotizacion->articuloRequerimiento->articulo->tipoUnidad->nombre;}}</td>
+                        <td align="center">{{ $item->articuloSolicitudCotizacion->articuloRequerimiento->articulo->articulo }}</td>
                         <td align="center">{{ $item->cantidad }}</td>
                     </tr>
                     @endforeach
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="2"></td>
-                        <td align="right"><b>TOTAL ARTÍCULOS</b></td>
-                        <td align="center"><b>{{$total_articulos}}</b></td>
+                        <td colspan="1"></td>
+                        <td colspan="2" align="right">TOTAL ART&Iacute;CULOS</td>
+                        <td align="center">{{$costoTotal}}</td>
                     </tr>
                 </tfoot>
             </table>
         </div>
 
 
+
+
+
         <footer class="main-footer">
             <div class="pie-pagina">
                 <div class="detalle center-text">
-                     <table width="100%">
+
+
+                    <table width="100%">
                         <thead>
+
                             <th></th>
+
                         </thead>
                         <tbody>
                             <tr>
                                 <td>
-                                     <p style="margin-top: 15px;"><b>ESPESIFICACIONES: </b> {{$requerimiento->descripcion}}
+                                    <p style="margin-top: 15px;">Nota: {{$solicitud->descripcion_solicitamos}}
 
-                                      
+                                        <br>
+                                        <span>
+                                            <b>Direcci&oacute;n de entrega zona: </b>{{$solicitud->descripcion}}
+                                        </span>
                                     </p>
+
                                 </td>
                             </tr>
 
                         </tbody>
                     </table>
-                    <table width="100%" >
+                    <table width="100%" style="margin-top: 0px;">
                         <thead>
 
-                          @foreach ($arregloFirmas as $aux)
+                             @foreach ($arregloFirmas as $aux)
                             <th></th>
                             @endforeach
                         </thead>
                         <tbody>
+
                             <tr>
                                @foreach ($arregloFirmas as $nombre=> $datos)
                                 <td align="center">

@@ -10,6 +10,7 @@
     <style>
        * {
             margin: 1px;
+            font-size: 12px;
             padding: 0;
              font-family: '{{$sucursalEmpresa->tipografia_pdf}}', sans-serif;
         }
@@ -26,7 +27,9 @@
 
         .plantilla .main-header {
             background: url({{$sucursalEmpresa->imagen}});
-            background-size: cover;
+            
+              background-size: 100% 100%;
+            background-repeat: no-repeat;
             width: 100%;
             height: 210px;
             z-index: 100;

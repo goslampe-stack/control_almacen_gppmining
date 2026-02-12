@@ -862,7 +862,6 @@ class Util extends Model
                 $auxiliarGeneral[$i]['total-existencia'] = Util::checkNumeroVacioyDouble($auxiliarGeneral[$i - 1]['total-existencia']) + Util::checkNumeroVacioyDouble($auxiliarGeneral[$i]['total-entrada']);
 
                 if ($auxiliarGeneral[$i]['cantidad-existencia'] > 0) {
-
                     $auxiliarGeneral[$i]['precio-existencia'] = Util::darFormatoMoneda(Util::checkNumeroVacioyDouble($auxiliarGeneral[$i]['total-existencia']) / Util::checkNumeroVacioDivicion($auxiliarGeneral[$i]['cantidad-existencia']));
                 } else {
 

@@ -68,11 +68,22 @@
                                         @error('fecha_pedido')<span class="text-danger small">{{$message}}</span> @enderror
                                     </div>
                                 </div>
-                            </div>
 
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="destinatario_id" style="margin-bottom: 0px;">Destinatario</label><br>
+                                        <span class="small">Eligir Destinatario </span>
+                                        <select class="form-control apl-input-border demo-default" id="destinatario_id" wire:model="destinatario_id" style="width: 100%;">
+                                            <option value="">{{__('Selecciona Destinatario')}}</option>
+                                            @foreach($personal as $item)
+                                            <option value="{{ $item->id }}">{{ $item->apellidos }}, {{ $item->nombre }} [{{ $item->tipoPersonal->nombre }}]</option>
+                                            @endforeach
+                                        </select>
+                                        @error('destinatario_id')<span class="text-danger">{{$message}}</span> @enderror
+                                    </div>
+                                </div>
 
-                            <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-7">
                                     <div class="form-group">
                                         <label for="descripcion" class="mb-0">Descripción</label><br>
                                         <span class="small">A continuación detallanos brevemente acerca del requerimiento</span>
@@ -80,13 +91,8 @@
                                         @error('descripcion')<span class="text-danger">{{$message}}</span> @enderror
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="row">
-                   
-                            </div>
 
-                            <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="txt_correoElectronico" style="margin-bottom: 0px;">Estado</label><br>
@@ -101,6 +107,8 @@
                                     </div>
                                 </div>
                             </div>
+
+
 
 
                             <div class="row">
@@ -143,12 +151,12 @@
                                     </button>
                                 </div>
                             </div>
-                     
+
                             <div class="card apl-border">
                                 <div class="card-body">
 
                                     <div class="row">
-                                       
+
                                         <div class="col-md-8">
                                             <div class="form-group">
                                                 <label for="articulos_id" style="margin-bottom: 0px;">Art&iacute;culo</label><br>
@@ -356,16 +364,16 @@
 
         /* SELECT 2 PARA CATEGORIA PRODUCTO */
         window.initSelectPersonalDrop = () => {
-            $('#personals_id').select2({
-                placeholder: '{{ __("Seleccione el personal") }}',
+            $('#destinatario_id').select2({
+                placeholder: '{{ __("Seleccione el Destinatario") }}',
                 allowClear: true
             });
         }
         initSelectPersonalDrop();
-        $('#personals_id').on('change', function(e) {
-            livewire.emit('selectedPersonalItem', e.target.value)
+        $('#destinatario_id').on('change', function(e) {
+            livewire.emit('selectedDestinarioItem', e.target.value)
         });
-        window.livewire.on('select2Personal', () => {
+        window.livewire.on('select2Destinartario', () => {
 
             initSelectPersonalDrop();
         });

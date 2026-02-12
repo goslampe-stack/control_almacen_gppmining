@@ -11,10 +11,11 @@
     @endphp
 
     
-    <style>
+       <style>
         * {
             margin: 1px;
-            padding: 0;
+            font-size: 12px;
+            padding: 0;   
               font-family: '{{$sucursalEmpresa->tipografia_pdf}}', sans-serif;
         }
 
@@ -25,13 +26,14 @@
         }
 
 
+
         /* ================================================== */
 
         .plantilla .main-header {
-            background: url({{$sucursalEmpresa->imagen}});
-            background-size: cover;
+          
+          background-size: cover;
             width: 100%;
-            height: 210px;
+            height: 0px;
             z-index: 100;
             position: absolute;
             top: 0px;
@@ -40,8 +42,8 @@
 
         .informacion {
             width: 100%;
-            margin-top: 170px;
-          /*   margin-left: 1.5rem;
+            margin-top: 0px;
+           /*  margin-left: 1.5rem;
             margin-right: 1.5rem; */
         }
 
@@ -71,7 +73,7 @@
         }
 
         .informacion .descripcion p {
-            margin-bottom: .5rem;
+             margin-bottom: .5rem;
         }
 
         /* ================================================== */
@@ -87,18 +89,34 @@
 
         .tableprincipal table {
             width: 100%;
-            margin-top: 480px;
+            margin-top: 430px;
+
             font-size: 12px;
         }
 
         .tableprincipal table th {
-           background: {{$sucursalEmpresa->colorPdf}};
+           background: orange;
             color: #fff;
             padding: 0.3rem 0rem;
             text-transform: uppercase;
         }
 
 
+
+        
+        .tablePrimerTable table th {
+           background: orange;
+            color: #fff;
+            padding: 0.3rem 0rem;
+            text-transform: uppercase;
+        }
+
+ .tablePrimerTable table {
+            width: 100%;
+           
+
+            font-size: 12px;
+        }
 
 
 
@@ -125,14 +143,14 @@
 
         .pie-pagina .detalle {
             width: 100%;
-           /*  margin-left: 1.5rem;
+        /*     margin-left: 1.5rem;
             margin-right: 1.5rem; */
 
         }
 
         .pie-table {
             width: 100%;
-          /*   margin-left: 1.5rem;
+        /*     margin-left: 1.5rem;
             margin-right: 1.5rem; */
         }
 
@@ -159,13 +177,42 @@
     <div class="plantilla">
         <header class="main-header">
             <div class="informacion">
-                <div class="ruc">
-                    <h3>&nbsp;</h3>
-                    <br>
-                </div>
+                
 
                 <div class="orden">
-                    <table width="100%">
+                          <table width="100%">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td width="200px">
+                                <img src="{{ asset('dist/empresa/logo_gpp_mining.jpeg') }}" alt="" width="150px" height="150px">
+                                 </td>
+                                <td align="right">
+                                    <p>
+                                        <b> REQUERIMIENTO DE COTIZACI&Oacute;N</b>
+                                        <br>                                      
+                                        <span>
+                                            N°: {{$solicitud->numero_solicitud_cotizacion}}
+                                        </span>
+                                        <br>
+                                                                            
+                                    </p>
+
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                             <table width="100%">
                         <thead>
                             <tr>
                                 <th></th>
@@ -177,23 +224,26 @@
 
                             <tr>
                                 <td>
-                                    <p><b>{{ \App\Models\Util::getMayuscula($sucursalEmpresa->empresa->razon_social) }}</b> <br><span>{{$sucursalEmpresa->nombre_sucursal }}</span><br><br></p>
-                                </td>
-                                <td align="right">
                                     <p>
-                                        <b> SOLICITUD DE COTIZACI&Oacute;N</b>
-                                        <br>
+                                        <b>{{ \App\Models\Util::getMayuscula($sucursalEmpresa->empresa->razon_social) }}</b>
+                                     <br><b>RUC: {{$sucursalEmpresa->empresa->ruc }}</b>
+                                     <br><b>DOM. FISCAL: OTR.SN NRO. SN OTR. ML. MIRADOR SHANCAYAN Nº S/N URB. EL
+                                        MIRADOR ANCASH - HUARAZ - INDEPENDENCIA</b>
+                                    <br> <br><b>SEDE PRODUCTIVA: </b>OTR.SN NRO. S/N OTR. CERRO NUMEROYOC CONCESION ANITA
+                                        M.L.M. COD. UNICO 09010657X01 ANCASH - CARHUAZ - YUNGAR<br>
+                                     <br><b>CEL {{$sucursalEmpresa->empresa->celular }}</b><br>
+                                    </p>
+                                </td>
+                                <td width="250px">
+                                    <p>  
                                         <span>
-                                            N° requerimiento interno: {{$solicitud->requerimientoCompras->requerimientoPersonal->numero_requerimiento}}
+                                            Fecha de pedido: {{ \Carbon\Carbon::parse($solicitud->fecha_solicitud)->format('d/m/Y') }}
+                                        </span>                                     
+                                         <br>
+                                        <span>
+                                            Condici&oacute;n de pago: Al cr&eacute;dito
                                         </span>
                                         <br>
-                                        <span>
-                                            N° solicitud: {{$solicitud->numero_solicitud_cotizacion}}
-                                        </span>
-                                        <br>
-                                        <span>
-                                            Fecha: {{ \Carbon\Carbon::parse($solicitud->fecha_solicitud)->format('d/m/Y') }}
-                                        </span>
                                     </p>
 
                                 </td>
@@ -201,77 +251,67 @@
 
                         </tbody>
                     </table>
-                </div>
 
-                <div>
-                    <table width="100%">
+                    
+                         <div class="tablePrimerTable">
+                    <table  class="table">
                         <thead>
                             <tr>
-                                <th style="width: 50%;"></th>
+                                <th style="width: 50%;">PROVEEDOR</th>
                                 <th style="width: 50%;"></th>
                             </tr>
 
                         </thead>
                         <tbody>
+                      
 
                             <tr>
-                                <td style="width: 50%;"> <span><b>CLIENTE</b></span><br></td>
-                                <td style="width: 50%;"> <span><b>PROVEEDOR</b></span><br></td>
 
+                                <td style="width: 50%; vertical-align: top;">
 
-                            </tr>
-
-                            <tr>
-                                <td style="width: 50%;vertical-align: top;">
-
-
-                                    <span>
-                                        <b>Raz&oacute;n social: </b>{{$sucursalEmpresa->empresa->razon_social}}
+                                  <span>
+                                        <b> {{$solicitud->proveedor->razon_social}}</b>  
 
                                     </span><br>
                                     <span>
-                                        <b> RUC: </b>{{$sucursalEmpresa->empresa->ruc}}
+                                        <b> RUC: </b> {{$solicitud->proveedor->ruc}}
 
-                                    </span><br>
+                                    </span><br><br>
                                     <span>
-                                        <b>Domicilio Fiscal: </b>{{$sucursalEmpresa->direccion}}
+                                        <b>{{$sucursalEmpresa->direccion}}</b>
 
-                                    </span><br>
+                                    </span><br><br>
+                                 
                                     <span>
-                                        <b>Email: </b>{{$sucursalEmpresa->empresa->correo_electronico}}
+                                        <b>  {{$solicitud->proveedor->correo_electronico}}</b> 
 
                                     </span><br>
 
                                 </td>
-                                <td style="width: 50%;  vertical-align: top;">
 
-
-                                    <span>
-                                        <b> Raz&oacute;n social: </b>{{$solicitud->proveedor->razon_social}}
-
-                                    </span><br>
-                                    <span>
-                                        <b> RUC: </b>{{$solicitud->proveedor->ruc}}
-
-                                    </span><br>
+                                <td style="width: 50%; vertical-align: middle;" >
 
                                     <span>
-                                        <b> Email: </b> {{$solicitud->proveedor->correo_electronico}}
+                                        <b> Recojo de las instalaciones del proveedor</b>  
 
                                     </span><br>
-                                  
-                                    
-
+                                   
                                 </td>
+                             
+
                             </tr>
 
                         </tbody>
                     </table>
                 </div>
 
-                <div class="descripcion">
-                    <p style="margin-top: 15px;">  Solicitamos tenga a bien cotizarnos los productos requeridos lineas abajo, por ser necesario para nuestras operaci&oacute;nes.</p>
+
+                 
                 </div>
+
+           
+
+        
             </div>
         </header>
 
@@ -324,11 +364,11 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <p style="margin-top: 15px;">Nota: {{$solicitud->descripcion_solicitamos}}
+                                    <p style="margin-top: 15px;"> {{$solicitud->descripcion_solicitamos}}
 
                                         <br>
                                         <span>
-                                            <b>Direcci&oacute;n de entrega zona: </b>{{$solicitud->descripcion}}
+                                         <b></b>  {{$solicitud->descripcion}}
                                         </span>
                                     </p>
 

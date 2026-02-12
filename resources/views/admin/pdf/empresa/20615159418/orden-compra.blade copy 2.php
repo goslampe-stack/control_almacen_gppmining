@@ -4,15 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Requerimiento internos de productos</title>
-
+    <title>Orden de compra</title>
     @php
     $marginTop = intval($contadorTotal);
-    $alturaEmcabezado = intval($alturaEmcabezado);
     @endphp
-
-
-    <style>
+      <style>
         * {
             margin: 1px;
             font-size: 12px;
@@ -90,7 +86,7 @@
 
         .tableprincipal table {
             width: 100%;
-            margin-top: 430px;
+            margin-top: 20px;
 
             font-size: 12px;
         }
@@ -178,12 +174,14 @@
     <div class="plantilla">
         <header class="main-header">
             <div class="informacion">
-             <!--    <div class="ruc">
+         <!--        <div class="ruc">
                     <h3>&nbsp;</h3>
                     <br>
-                </div> -->
+                </div>
+ -->
 
-                    <div class="orden">
+
+                <div class="orden">
                     <table width="100%">
                         <thead>
                             <tr>
@@ -201,13 +199,16 @@
                                  </td>
                                 <td align="right">
                                     <p>
-                                        <b> REQUERIMIENTO DE ALMACEN</b>
+                                        <b> ORDEN DE COMPRA</b>
                                         <br>                                      
                                         <span>
-                                            N°: {{$requerimiento->numero_requerimiento}}
+                                            N°: {{$orden->numero_orden_compra}}
                                         </span>
                                         <br>
-                                                                            
+                                        <span>
+                                            REFERENCIA DE COTIZACION: {{$orden->cotizacion_proveedor}}
+                                        </span>
+                                         <br>                                       
                                     </p>
 
                                 </td>
@@ -215,9 +216,6 @@
 
                         </tbody>
                     </table>
-
-
-
                     <table width="100%">
                         <thead>
                             <tr>
@@ -246,13 +244,18 @@
                                        
                                      
                                         <span>
-                                            Fecha de pedido: {{$requerimiento->fecha_pedido}}
-                                        </span>                                     
+                                            Fecha de pedido: {{$orden->fecha_pedido}}
+                                        </span>
+                                        <br>
+                                        <span>
+                                           Fecha estimada de pago: {{$orden->fecha_estimada_pago}}
+                                        </span>
                                          <br>
                                         <span>
                                             Condici&oacute;n de pago: Al cr&eacute;dito
                                         </span>
                                         <br>
+                                     
                                     </p>
 
                                 </td>
@@ -260,13 +263,14 @@
 
                         </tbody>
                     </table>
+                </div>
 
-                     <div class="tablePrimerTable">
+                <div class="tablePrimerTable">
                     <table  class="table">
                         <thead>
                             <tr>
-                                <th style="width: 50%;">DESTINARIO</th>
-                                <th style="width: 50%;"></th>
+                                <th style="width: 50%;">Proveedor</th>
+                                <th style="width: 50%;">Direcci&oacute;n de entrega</th>
                             </tr>
 
                         </thead>
@@ -278,20 +282,20 @@
                                 <td style="width: 50%; vertical-align: top;">
 
                                   <span>
-                                        <b> {{$requerimiento->destinatario->apellidos}}, {{$requerimiento->destinatario->nombre}}</b>  
+                                        <b> {{$orden->proveedor->razon_social}}</b>  
 
                                     </span><br>
                                     <span>
-                                        <b> {{$requerimiento->destinatario->tipo_documento}}: </b> {{$requerimiento->destinatario->numero_documento}}
+                                        <b> RUC: </b> {{$orden->proveedor->ruc}}
 
                                     </span><br>
                                     <span>
-                                        <b> &Aacute;REA: </b> COMPRAS
+                                        <b> Domicilio: </b> {{$orden->proveedor->direccion}}
 
                                     </span><br>
                                  
                                     <span>
-                                        <b> Email: </b> {{$requerimiento->destinatario->correo_electronico}}
+                                        <b> Email: </b> {{$orden->proveedor->correo_electronico}}
 
                                     </span><br>
 
@@ -300,7 +304,7 @@
                                 <td style="width: 50%; vertical-align: middle;" >
 
                                     <span>
-                                        <b> Los productos solicitados son para uso en mina</b>  
+                                        <b> Recojo de las instalaciones del proveedor </b>  
 
                                     </span><br>
                                    
@@ -312,12 +316,7 @@
                         </tbody>
                     </table>
                 </div>
-                </div>
-
-
-
-               
-            </div>
+           
         </header>
 
         <div class="tableprincipal">
@@ -325,62 +324,81 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Código</th>
+                        <th>C&oacute;digo</th>
+                        <th>Unidad</th>
                         <th>Artículo</th>
-                        <th>Tipo unidad</th>
                         <th>Cantidad</th>
+                        <th>Precio unitario</th>
+                        <th>Precio total</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($data as $item)
+                    @foreach ($articulos as $item)
                     <tr>
-                        <td align="center">{{ $item->articulo->codigo }}</td>
-                        <td align="center">{{ $item->articulo->articulo }} </td>
-                        <td align="center">{{ $item->articulo->tipoUnidad->nombre }}</td>
+                        <td align="center">{{ $item->articuloRequerimiento->articuloSolicitudCotizacion->articuloRequerimiento->articulo->codigo }}</td>
+                        <td align="center">{{ $item->articuloRequerimiento->articuloSolicitudCotizacion->articuloRequerimiento->articulo->tipoUnidad->nombre;}}</td>
+                        <td align="center">{{ $item->articuloRequerimiento->articuloSolicitudCotizacion->articuloRequerimiento->articulo->articulo }}</td>
                         <td align="center">{{ $item->cantidad }}</td>
+                        <td align="center">S/ {{ $item->darFormatoMoneda($item->precio_unitario)  }}</td>
+                        <td align="right">S/ {{ $item->calcularPrecioTotal($item->cantidad,$item->precio_unitario) }}</td>
                     </tr>
                     @endforeach
                 </tbody>
                 <tfoot>
+                    <tr style="margin-top: 30px;">
+                        <td colspan="4"></td>
+                        <td align="center"><b>SUB TOTAL</b> </td>
+                        <td align="right">S/ {{$subTotal}}</td>
+                    </tr>
                     <tr>
-                        <td colspan="2"></td>
-                        <td align="right"><b>TOTAL ARTÍCULOS</b></td>
-                        <td align="center"><b>{{$total_articulos}}</b></td>
+                        <td colspan="4"></td>
+                        <td align="center"><b>IGV (18%)</b> </td>
+                        <td align="right">S/ {{$igv}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"></td>
+                        <td align="center"><b>TOTAL</b></td>
+                        <td align="right"><b>S/ {{$costoTotal}}</b></td>
                     </tr>
                 </tfoot>
             </table>
         </div>
 
 
-        <footer class="main-footer">
+
+        <footer class="main-footer" style="background-color: rebeccapurple;">
             <div class="pie-pagina">
                 <div class="detalle center-text">
-                     <table width="100%">
+                <table width="100%">
                         <thead>
                             <th></th>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>
-                                     <p style="margin-top: 15px;"><b>ESPESIFICACIONES: </b> {{$requerimiento->descripcion}}
+                                     <p style="margin-top: 15px;">{{$orden->descripcion_solicitamos}}
 
-                                      
+                                        <br>
+                                        <span>
+                                            <b>ESPESIFICACIONES: </b>{{$orden->terminos_de_entrega}}
+                                        </span>
                                     </p>
                                 </td>
                             </tr>
 
                         </tbody>
                     </table>
-                    <table width="100%" >
+
+                    <table width="100%" height="50px">
                         <thead>
 
-                          @foreach ($arregloFirmas as $aux)
+                            @foreach ($arregloFirmas as $aux)
                             <th></th>
                             @endforeach
                         </thead>
                         <tbody>
                             <tr>
-                               @foreach ($arregloFirmas as $nombre=> $datos)
+                                @foreach ($arregloFirmas as $nombre=> $datos)
                                 <td align="center">
 
                                     <img src="{{$datos['imagen']}}" alt="" style="width: 100px;height: 50px; margin-bottom: 0px; margin-top: 20px;">
