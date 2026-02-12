@@ -11,6 +11,8 @@
        * {
             margin: 1px;
             padding: 0;
+              font-size: 12px;
+
              font-family: '{{$sucursalEmpresa->tipografia_pdf}}', sans-serif;
         }
 
@@ -26,8 +28,8 @@
 
         .plantilla .main-header {
             background: url({{$sucursalEmpresa->imagen}});
-            background-size: 100% 200px;
-          background-repeat: no-repeat;
+         background-size: 100% 100%;
+            background-repeat: no-repeat;
             width: 100%;
             height: 210px;
             z-index: 100;
@@ -85,7 +87,7 @@
 
         .tableprincipal table {
             width: 100%;
-            margin-top: 320px;
+            margin-top: 280px;
             font-size: 12px;
         }
 
