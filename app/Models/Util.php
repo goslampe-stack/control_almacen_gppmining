@@ -29,6 +29,7 @@ class Util extends Model
 
     public const  RUC_GRUPO_ALFA_DORADO = "20614808340";
     public const  RUC_GPP_MINING = "20615159418";
+    public const  RUC_MJ_MINING = "20614280302";
 
     public static function tienePdfDefinidoEmpresa($ruc, $name)
     {
@@ -53,6 +54,12 @@ class Util extends Model
             $estado = "SI";
         }
         /////GRUPO ALFA DORADO
+        
+        /////MJ MINING
+         if ($ruc == Util::RUC_MJ_MINING && $name == "requerimiento-personal") {
+            $estado = "SI";
+        } else
+        /////MJ MINING
 
         /////RUC_GPP_MINING
         if ($ruc == Util::RUC_GPP_MINING && $name == "orden-compra") {

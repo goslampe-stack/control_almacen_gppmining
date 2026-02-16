@@ -279,6 +279,7 @@ class Formulario extends Component
 
             'fecha_pedido' => ['required'],
             'estado' => 'required',
+            'destinatarios_id' => 'required',
         ]);
 
 
@@ -323,6 +324,7 @@ class Formulario extends Component
           
             'fecha_pedido' => ['required'],
             'estado' => 'required',
+            'destinatarios_id' => 'required',
         ]);
 
 
