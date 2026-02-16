@@ -93,6 +93,8 @@ class RequerimientoComprasController extends Controller
         ///////LEEMOS EL ARRAGLO
         $abrirPdfPorEmpreas = Util::getAbrirPdfTipoEmpresaSeleccionada();
 
+        $nameUrl = "admin.pdf.requerimiento-compras";
+
         ///verificamos si se abrira con la empresa tipo o normal
         if ($abrirPdfPorEmpreas == "SI") {
             $ruc = $sucursalEmpresa->empresa->ruc;
