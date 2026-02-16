@@ -147,11 +147,11 @@ class VerEmpresas extends Component
 
         $data = Empresa::where('users_id', '=', $this->users_id)->get();
 
-      /*   if ($data->count() < $this->cantidad && Util::esUsuario()) { */
+        if ($data->count() < 5 && Util::esUsuario()) { 
             $this->puedeCrearEmpresas = "Si";
-       /*  } else {
+         } else {
             $this->puedeCrearEmpresas = "No";
-        } */
+        } 
 
 
         if (Util::esUsuario() == false) {

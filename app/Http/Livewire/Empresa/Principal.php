@@ -92,6 +92,9 @@ class Principal extends Component
     {
         $data = Empresa::search($this->search, $this->filtrarPorEstado, $this->users_id)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->simplePaginate($this->perPage);
 
+       
+       
+
         return $data;
     }
 
