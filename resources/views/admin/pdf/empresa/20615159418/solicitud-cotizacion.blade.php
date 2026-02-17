@@ -241,7 +241,7 @@
                                         </span>                                     
                                          <br>
                                         <span>
-                                            Condici&oacute;n de pago: Al cr&eacute;dito
+                                            Condici&oacute;n de pago: Al cr&eacute;dito.
                                         </span>
                                        <br>
                                         <span>
