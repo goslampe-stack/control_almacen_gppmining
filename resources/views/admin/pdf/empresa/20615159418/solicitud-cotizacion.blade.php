@@ -243,6 +243,10 @@
                                         <span>
                                             Condici&oacute;n de pago: Al cr&eacute;dito
                                         </span>
+                                       <br>
+                                        <span>
+                                            N° Requerimiento Interno: {{$solicitud->requerimientoCompras->requerimientoPersonal->numero_requerimiento}}
+                                        </span>
                                         <br>
                                     </p>
 
