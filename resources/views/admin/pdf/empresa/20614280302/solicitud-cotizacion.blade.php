@@ -89,7 +89,7 @@
 
         .tableprincipal table {
             width: 100%;
-            margin-top: 470px;
+            margin-top: 460px;
 
             font-size: 12px;
         }
@@ -278,11 +278,11 @@
                                     <span>
                                         <b> RUC: </b> {{$solicitud->proveedor->ruc}}
 
-                                    </span><br><br>
+                                    </span><br>
                                     <span>
                                         <b>{{$solicitud->proveedor->direccion}}</b>
 
-                                    </span><br><br>
+                                    </span><br>
                                  
                                     <span>
                                         <b>  {{$solicitud->proveedor->correo_electronico}}</b> 
