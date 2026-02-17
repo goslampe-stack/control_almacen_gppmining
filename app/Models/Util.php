@@ -60,6 +60,8 @@ class Util extends Model
             $estado = "SI";
         } else if ($ruc == Util::RUC_MJ_MINING && $name == "solicitud-cotizacion") {
             $estado = "SI";
+        }else  if ($ruc == Util::RUC_MJ_MINING && $name == "orden-compra") {
+            $estado = "SI";
         }
         /////MJ MINING
 
