@@ -278,7 +278,7 @@
 
                                     </span><br><br>
                                     <span>
-                                        <b>{{$sucursalEmpresa->direccion}}</b>
+                                         <b>{{$solicitud->proveedor->direccion}}</b>
 
                                     </span><br><br>
                                  

@@ -86,7 +86,7 @@
 
         .tableprincipal table {
             width: 100%;
-            margin-top: 420px;
+            margin-top: 460px;
 
             font-size: 12px;
         }
@@ -309,6 +309,37 @@
                                    
                                 </td>
                              
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                  <div class="tablePrimerTable">
+                    <table  class="table">
+                        <thead>
+                            <tr>
+                                <th >DATOS</th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                      
+
+                            <tr>
+
+                                <td style="width: 50%; vertical-align: top;">
+
+                                 
+                                    <span>
+                                        <b> Elaborado por: </b> LARA ZAVALETA JOANNA VALERY
+
+                                    </span><br>
+                                    <span>
+                                        <b> Autorizado por: </b> GUTIERREZ YUPANQUI BRYAN ALEXIS
+
+                                    </span><br>
+                                </td>                             
 
                             </tr>
 
