@@ -89,7 +89,7 @@
 
         .tableprincipal table {
             width: 100%;
-            margin-top: 430px;
+            margin-top: 460px;
 
             font-size: 12px;
         }
@@ -276,11 +276,11 @@
                                     <span>
                                         <b> RUC: </b> {{$solicitud->proveedor->ruc}}
 
-                                    </span><br><br>
+                                    </span><br>
                                     <span>
                                          <b>{{$solicitud->proveedor->direccion}}</b>
 
-                                    </span><br><br>
+                                    </span><br>
                                  
                                     <span>
                                         <b>  {{$solicitud->proveedor->correo_electronico}}</b> 
@@ -305,6 +305,38 @@
                     </table>
                 </div>
 
+                
+                <div class="tablePrimerTable">
+                    <table  class="table">
+                        <thead>
+                            <tr>
+                                <th >DATOS</th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                      
+
+                            <tr>
+
+                                <td style="width: 50%; vertical-align: top;">
+
+                                 
+                                    <span>
+                                        <b> Elaborado por: </b> ORTIZ BRAVO MELINA
+
+                                    </span><br>
+                                    <span>
+                                        <b> Autorizado por: </b> POMA PRUDENCIO GILBER ALEX
+
+                                    </span><br>
+                                </td>                             
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
 
                  
                 </div>
