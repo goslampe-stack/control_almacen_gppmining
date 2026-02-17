@@ -54,11 +54,13 @@ class Util extends Model
             $estado = "SI";
         }
         /////GRUPO ALFA DORADO
-        
+
         /////MJ MINING
-         if ($ruc == Util::RUC_MJ_MINING && $name == "requerimiento-personal") {
+        if ($ruc == Util::RUC_MJ_MINING && $name == "requerimiento-personal") {
             $estado = "SI";
-        } else
+        } else if ($ruc == Util::RUC_MJ_MINING && $name == "solicitud-cotizacion") {
+            $estado = "SI";
+        }
         /////MJ MINING
 
         /////RUC_GPP_MINING
@@ -74,7 +76,7 @@ class Util extends Model
             $estado = "SI";
         } else if ($ruc == Util::RUC_GPP_MINING && $name == "salida-articulos") {
             $estado = "SI";
-         } else if ($ruc == Util::RUC_GRUPO_ALFA_DORADO && $name == "kardex") {
+        } else if ($ruc == Util::RUC_GRUPO_ALFA_DORADO && $name == "kardex") {
             $estado = "SI";
         }
         /////GRUPO ALFA DORADO
