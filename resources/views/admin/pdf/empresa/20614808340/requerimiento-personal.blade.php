@@ -14,29 +14,27 @@
 
     <style>
         * {
-            margin:1px;
-            padding: 0;
-              font-size: 12px;
-             
+            margin: 1px;
+            font-size: 12px;
+            padding: 0;   
+              font-family: '{{$sucursalEmpresa->tipografia_pdf}}', sans-serif;
         }
 
-        body {        
+        body {
+            font-family: '{{$sucursalEmpresa->tipografia_pdf}}', sans-serif;
 
             text-align: start;
         }
 
 
 
-
         /* ================================================== */
 
         .plantilla .main-header {
-            background: url({{$sucursalEmpresa->imagen}});
-            background-size: 100% 100%;
-            background-repeat: no-repeat;
-
+          
+          background-size: cover;
             width: 100%;
-            height: 210px;
+            height: 0px;
             z-index: 100;
             position: absolute;
             top: 0px;
@@ -45,8 +43,8 @@
 
         .informacion {
             width: 100%;
-            margin-top: 170px;
-         /*    margin-left: 1.5rem;
+            margin-top: 0px;
+           /*  margin-left: 1.5rem;
             margin-right: 1.5rem; */
         }
 
@@ -76,32 +74,52 @@
         }
 
         .informacion .descripcion p {
-            margin-bottom: .5rem;
+             margin-bottom: .5rem;
         }
 
         /* ================================================== */
 
         .plantilla .tableprincipal {
             width: 100%;
-           /*  margin-right: 1.5rem; */
+            margin-right: 1.5rem;
         }
 
         .tableprincipal .table {
-            /* margin-left: 1.5rem; */
+            margin-left: 0rem;
         }
 
         .tableprincipal table {
             width: 100%;
-            margin-top: 340px;
+            margin-top: 350px;
+
             font-size: 12px;
         }
 
         .tableprincipal table th {
-            background: {{$sucursalEmpresa->colorPdf}};
+           background: goldenrod;
             color: #fff;
             padding: 0.3rem 0rem;
             text-transform: uppercase;
         }
+
+
+
+        
+        .tablePrimerTable table th {
+           background: goldenrod;
+            color: #fff;
+            padding: 0.3rem 0rem;
+            text-transform: uppercase;
+        }
+
+ .tablePrimerTable table {
+            width: 100%;
+           
+
+            font-size: 12px;
+        }
+
+
 
         /* ================================================== */
 
@@ -110,7 +128,7 @@
             background-size: cover;
             background-position: 50% 100%;
             width: 100%;
-            height: 140px;
+            height: 220px;
             z-index: 50;
             position: absolute;
             bottom: 0px;
@@ -119,13 +137,22 @@
         }
 
         .pie-pagina .firma {
-            width: 100%;
-           /*  margin-left: 1.5rem; */
+            width: 120%;
+          /*   margin-left: 1.5rem;
+            margin-right: 1.5rem; */
         }
 
         .pie-pagina .detalle {
             width: 100%;
-           /*  margin-left: 1.5rem; */
+        /*     margin-left: 1.5rem;
+            margin-right: 1.5rem; */
+
+        }
+
+        .pie-table {
+            width: 100%;
+        /*     margin-left: 1.5rem;
+            margin-right: 1.5rem; */
         }
 
         .pie-pagina .detalle .left {
@@ -151,38 +178,36 @@
     <div class="plantilla">
         <header class="main-header">
             <div class="informacion">
-                <div class="ruc">
+             <!--    <div class="ruc">
                     <h3>&nbsp;</h3>
                     <br>
-                </div>
+                </div> -->
 
-
-
-                <div class="orden">
+                    <div class="orden">
                     <table width="100%">
                         <thead>
                             <tr>
                                 <th></th>
                                 <th></th>
+                                <th></th>
                             </tr>
+
                         </thead>
                         <tbody>
 
                             <tr>
-                                <td>
-                                    <p><b>{{ \App\Models\Util::getMayuscula($sucursalEmpresa->empresa->razon_social) }}</b> <br><span>{{$sucursalEmpresa->nombre_sucursal }}</span><br><br></p>
-                                </td>
+                                <td width="200px">
+                                <img src="{{ asset('dist/empresa/logo_grupo_alfa_dorado.jpg') }}" alt="" width="150px" height="150px">
+                                 </td>
                                 <td align="right">
                                     <p>
-                                        <b> REQUERIMIENTO INTERNO DE PRODUCTOS</b>
-                                        <br>
+                                        <b> REQUERIMIENTO DE ALMACEN</b>
+                                        <br>                                      
                                         <span>
-                                            N° Requerimiento: {{$requerimiento->numero_requerimiento}}
+                                            N°: {{$requerimiento->numero_requerimiento}}
                                         </span>
                                         <br>
-                                        <span>
-                                            Fecha: {{ \Carbon\Carbon::parse($requerimiento->fecha_pedido)->format('d/m/Y') }}
-                                        </span>
+                                                                            
                                     </p>
 
                                 </td>
@@ -190,13 +215,107 @@
 
                         </tbody>
                     </table>
+
+
+
+                    <table width="100%">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td>
+                                    <p>
+                                        <b>{{ \App\Models\Util::getMayuscula($sucursalEmpresa->empresa->razon_social) }}</b>
+                                     <br><b>RUC: {{$sucursalEmpresa->empresa->ruc }}</b>
+                                     <br><b>DOM. FISCAL: CAL.28 DE JULIO NRO. 325 P.J. FLORENCIA DE MORA BA. 12 LA LIBERTAD - TRUJILLO - FLORENCIA DE MORA</b>
+                                     <br><br><b>CEL 950791647</b><br>
+                                    </p>
+                                </td>
+                                <td width="250px">
+                                    <p>
+                                        
+                                       
+                                     
+                                        <span>
+                                            Fecha de pedido: {{$requerimiento->fecha_pedido}}
+                                        </span>                                     
+                                         <br>
+                                        <span>
+                                            Condici&oacute;n de pago: Al cr&eacute;dito
+                                        </span>
+                                        <br>
+                                    </p>
+
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                     <div class="tablePrimerTable">
+                    <table  class="table">
+                        <thead>
+                            <tr>
+                                <th style="width: 50%;">DESTINARIO</th>
+                                <th style="width: 50%;"></th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                      
+
+                            <tr>
+
+                                <td style="width: 50%; vertical-align: top;">
+
+                                  <span>
+                                        <b> {{$requerimiento->destinatario->apellidos}}, {{$requerimiento->destinatario->nombre}}</b>  
+
+                                    </span><br>
+                                    <span>
+                                        <b> {{$requerimiento->destinatario->tipo_documento}}: </b> {{$requerimiento->destinatario->numero_documento}}
+
+                                    </span><br>
+                                    <span>
+                                        <b> &Aacute;REA: </b> COMPRAS
+
+                                    </span><br>
+                                 
+                                    <span>
+                                        <b> Email: </b> {{$requerimiento->destinatario->correo_electronico}}
+
+                                    </span><br>
+
+                                </td>
+
+                                <td style="width: 50%; vertical-align: middle;" >
+
+                                    <span>
+                                        <b> Los productos seran usados para las actividades de la empresa.</b>  
+
+                                    </span><br>
+                                   
+                                </td>
+                             
+
+                            </tr>
+
+                        </tbody>
+                    </table>
                 </div>
 
-                <div class="descripcion" style="margin-top: 10px;">
-                    <p><b>DIRECCI&Oacute;N DE LA EMPRESA:</b> {{$sucursalEmpresa->direccion}}</p>
-                    <p><b>T&Eacute;RMINOS DEL REQUERIMIENTO:</b> {{$requerimiento->descripcion}}</p>
-
+                
                 </div>
+
+
+
+               
             </div>
         </header>
 
@@ -235,6 +354,22 @@
         <footer class="main-footer">
             <div class="pie-pagina">
                 <div class="detalle center-text">
+                     <table width="100%">
+                        <thead>
+                            <th></th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                     <p style="margin-top: 15px;"><b>ESPESIFICACIONES: </b> {{$requerimiento->descripcion}}
+
+                                      
+                                    </p>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
                     <table width="100%" >
                         <thead>
 

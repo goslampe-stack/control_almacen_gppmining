@@ -11,9 +11,8 @@
       <style>
         * {
             margin: 1px;
-            padding: 0;   
             font-size: 12px;
-
+            padding: 0;   
               font-family: '{{$sucursalEmpresa->tipografia_pdf}}', sans-serif;
         }
 
@@ -28,11 +27,10 @@
         /* ================================================== */
 
         .plantilla .main-header {
-            background: url({{$sucursalEmpresa->imagen}});
-        background-size: 100% 100%;
-            background-repeat: no-repeat;
+          
+          background-size: cover;
             width: 100%;
-            height: 210px;
+            height: 0px;
             z-index: 100;
             position: absolute;
             top: 0px;
@@ -41,7 +39,7 @@
 
         .informacion {
             width: 100%;
-            margin-top: 170px;
+            margin-top: 0px;
            /*  margin-left: 1.5rem;
             margin-right: 1.5rem; */
         }
@@ -88,19 +86,34 @@
 
         .tableprincipal table {
             width: 100%;
-            margin-top: 420px;
+            margin-top: 430px;
 
             font-size: 12px;
         }
 
         .tableprincipal table th {
-           background: {{$sucursalEmpresa->colorPdf}};
+           background: goldenrod;
             color: #fff;
             padding: 0.3rem 0rem;
             text-transform: uppercase;
         }
 
 
+
+        
+        .tablePrimerTable table th {
+           background: goldenrod;
+            color: #fff;
+            padding: 0.3rem 0rem;
+            text-transform: uppercase;
+        }
+
+ .tablePrimerTable table {
+            width: 100%;
+           
+
+            font-size: 12px;
+        }
 
 
 
@@ -161,14 +174,48 @@
     <div class="plantilla">
         <header class="main-header">
             <div class="informacion">
-                <div class="ruc">
+             <!--    <div class="ruc">
                     <h3>&nbsp;</h3>
                     <br>
                 </div>
-
+ -->
 
 
                 <div class="orden">
+                    <table width="100%">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td width="200px">
+                                <img src="{{ asset('dist/empresa/logo_grupo_alfa_dorado.jpg') }}" alt="" width="150px" height="150px">
+                                 </td>
+                                <td align="right">
+                                    <p>
+                                        <b> ORDEN DE COMPRA</b>
+                                        <br>                                      
+                                        <span>
+                                            N°: {{$orden->numero_orden_compra}}
+                                        </span>
+                                        <br>
+                                        <span>
+                                            REFERENCIA DE COTIZACION: {{$orden->cotizacion_proveedor}}
+                                        </span>
+                                         <br>                                       
+                                    </p>
+
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
                     <table width="100%">
                         <thead>
                             <tr>
@@ -181,31 +228,32 @@
 
                             <tr>
                                 <td>
-                                    <p><b>{{ \App\Models\Util::getMayuscula($sucursalEmpresa->empresa->razon_social) }}</b> <br><span>{{$sucursalEmpresa->nombre_sucursal }}</span><br><br></p>
-                                </td>
-                                <td align="right">
                                     <p>
-                                        <b> ORDEN DE COMPRA</b>
-                                        <br>
+                                        <b>{{ \App\Models\Util::getMayuscula($sucursalEmpresa->empresa->razon_social) }}</b>
+                                     <br><b>RUC: {{$sucursalEmpresa->empresa->ruc }}</b>
+                                 <br><b>DOM. FISCAL: CAL.28 DE JULIO NRO. 325 P.J. FLORENCIA DE MORA BA. 12 LA LIBERTAD - TRUJILLO - FLORENCIA DE MORA</b>
+                                    <br> 
+                                          <br><b>CEL 950791647</b><br>
+                                    </p>
+                                </td>
+                                <td width="250px">
+                                    <p>
+                                        
+                                       
+                                     
                                         <span>
-                                           <b>Doc relacionados</b>
+                                            Fecha de pedido: {{$orden->fecha_pedido}}
                                         </span>
                                         <br>
                                         <span>
-                                            N° de orden: {{$orden->numero_orden_compra}}
-                                        </span>
-                                        <br>
-                                        <span>
-                                            N° de solicitud: {{$orden->solicitudCotizacion->numero_solicitud_cotizacion}}
+                                           Fecha estimada de pago: {{$orden->fecha_estimada_pago}}
                                         </span>
                                          <br>
                                         <span>
-                                            N° de cotizacion: {{$orden->solicitudCotizacion->numero_cotizacion}}
+                                            Condici&oacute;n de pago: Al cr&eacute;dito
                                         </span>
                                         <br>
-                                        <span>
-                                            Fecha: {{ \Carbon\Carbon::parse($orden->fecha_pedido)->format('d/m/Y') }} 
-                                        </span>
+                                     
                                     </p>
 
                                 </td>
@@ -213,53 +261,27 @@
 
                         </tbody>
                     </table>
+
                 </div>
 
-                <div>
-                    <table width="100%">
+                  <div class="tablePrimerTable">
+                    <table  class="table">
                         <thead>
                             <tr>
-                                <th style="width: 50%;"></th>
-                                <th style="width: 50%;"></th>
+                                <th style="width: 50%;">Proveedor</th>
+                                <th style="width: 50%;">Direcci&oacute;n de entrega</th>
                             </tr>
 
                         </thead>
                         <tbody>
-
-                        <tr>
-                                <td style="width: 50%;"> <span><b>CLIENTE</b></span><br></td>
-                                <td style="width: 50%;"> <span><b>DATOS DEL PROVEEDOR</b></span><br></td>
-
-
-                            </tr>
+                      
 
                             <tr>
 
                                 <td style="width: 50%; vertical-align: top;">
 
-                                    <span>
-                                        <b>Raz&oacute;n social: </b> {{$sucursalEmpresa->empresa->razon_social}}
-
-                                    </span><br>
-                                    <span>
-                                        <b> RUC: </b>{{$sucursalEmpresa->empresa->ruc}}
-
-                                    </span><br>
-                                    <span>
-                                        <b>Domicilio Fiscal: </b>{{$sucursalEmpresa->direccion}}
-
-                                    </span><br>
-                                    <span>
-                                        <b>Email: </b>{{$sucursalEmpresa->empresa->correo_electronico}}
-
-                                    </span><br>
-
-                                </td>
-
-                                <td style="width: 50%; vertical-align: top;">
-
-                                    <span>
-                                        <b> Raz&oacute;n social: </b>  {{$orden->proveedor->razon_social}}
+                                  <span>
+                                        <b> {{$orden->proveedor->razon_social}}</b>  
 
                                     </span><br>
                                     <span>
@@ -267,19 +289,24 @@
 
                                     </span><br>
                                     <span>
-                                        <b> Direcci&oacute;n: </b> {{$orden->proveedor->direccion}}
+                                        <b> Domicilio: </b> {{$orden->proveedor->direccion}}
 
                                     </span><br>
-
+                                 
                                     <span>
                                         <b> Email: </b> {{$orden->proveedor->correo_electronico}}
 
                                     </span><br>
+
+                                </td>
+
+                                <td style="width: 50%; vertical-align: middle;" >
+
                                     <span>
-                                        <b> N° de contacto: </b> {{$orden->proveedor->celular}}
+                                        <b> Recojo de las instalaciones del proveedor </b>  
 
                                     </span><br>
-
+                                   
                                 </td>
                              
 
@@ -288,6 +315,38 @@
                         </tbody>
                     </table>
                 </div>
+                  <div class="tablePrimerTable">
+                    <table  class="table">
+                        <thead>
+                            <tr>
+                                <th >DATOS</th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                      
+
+                            <tr>
+
+                                <td style="width: 50%; vertical-align: top;">
+
+                                 
+                                    <span>
+                                        <b> Elaborado por: </b> REYES VASQUEZ CARLOS ENRIQUE
+
+                                    </span><br>
+                                    <span>
+                                        <b> Autorizado por: </b> FLOREANO ZAVALETA XAVIER ANTONIO
+
+                                    </span><br>
+                                </td>                             
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
         </header>
 
@@ -335,8 +394,7 @@
                 </tfoot>
             </table>
         </div>
-
-
+<!-- asdas -->
 
         <footer class="main-footer">
             <div class="pie-pagina">
@@ -346,17 +404,18 @@
                             <th></th>
                         </thead>
                         <tbody>
-                            <tr>
+                             <tr>
                                 <td>
-                                     <p style="margin-top: 15px;">Nota: {{$orden->descripcion_solicitamos}}
+                                     <p style="margin-top: 15px;">{{$orden->descripcion_solicitamos}}
 
                                         <br>
                                         <span>
-                                            <b>Direcci&oacute;n de entrega zona: </b>{{$orden->terminos_de_entrega}}
+                                            {{$orden->terminos_de_entrega}}
                                         </span>
                                     </p>
                                 </td>
                             </tr>
+                         
 
                         </tbody>
                     </table>

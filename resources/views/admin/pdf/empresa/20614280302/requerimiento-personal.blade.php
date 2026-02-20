@@ -90,7 +90,7 @@
 
         .tableprincipal table {
             width: 100%;
-            margin-top: 430px;
+            margin-top: 400px;
 
             font-size: 12px;
         }
