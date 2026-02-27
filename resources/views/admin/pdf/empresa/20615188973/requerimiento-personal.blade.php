@@ -197,7 +197,7 @@
 
                             <tr>
                                 <td width="200px">
-                                <img src="{{ asset('dist/empresa/logo_mj_mining.jpeg') }}" alt="" width="150px" height="150px">
+                                <img src="{{ asset('dist/empresa/logo_metal_pro.jpeg') }}" alt="" width="150px" height="150px">
                                  </td>
                                 <td align="right">
                                     <p>
