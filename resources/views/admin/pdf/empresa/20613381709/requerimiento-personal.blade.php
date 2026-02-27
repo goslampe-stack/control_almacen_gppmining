@@ -96,7 +96,7 @@
         }
 
         .tableprincipal table th {
-           background: goldenrod;
+           background: #0647ab;
             color: #fff;
             padding: 0.3rem 0rem;
             text-transform: uppercase;
@@ -106,7 +106,7 @@
 
         
         .tablePrimerTable table th {
-           background: goldenrod;
+           background: #0647ab;
             color: #fff;
             padding: 0.3rem 0rem;
             text-transform: uppercase;

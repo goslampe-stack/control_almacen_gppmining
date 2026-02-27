@@ -87,7 +87,7 @@
         }
 
         .tableprincipal table th {
-             background: {{$sucursalEmpresa->colorPdf}};
+             background: #0647ab;
             color: #fff;
             padding: 0.3rem 0rem;
             text-transform: uppercase;
