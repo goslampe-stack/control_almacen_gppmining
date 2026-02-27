@@ -30,6 +30,8 @@ class Util extends Model
     public const  RUC_GRUPO_ALFA_DORADO = "20614808340";
     public const  RUC_GPP_MINING = "20615159418";
     public const  RUC_MJ_MINING = "20614280302";
+    public const  RUC_METALPRO_ANDES = "20615188973";
+    public const  RUC_MAGNUNN_EXPRESS = "20613381709";
 
     public static function tienePdfDefinidoEmpresa($ruc, $name)
     {
@@ -55,6 +57,24 @@ class Util extends Model
         }
         /////GRUPO ALFA DORADO
 
+        /////RUC_MAGNUNN_EXPRESS
+        if ($ruc == Util::RUC_MAGNUNN_EXPRESS && $name == "orden-compra") {
+            $estado = "SI";
+        } else if ($ruc == Util::RUC_MAGNUNN_EXPRESS && $name == "requerimiento-personal") {
+            $estado = "SI";
+        } else if ($ruc == Util::RUC_MAGNUNN_EXPRESS && $name == "solicitud-cotizacion") {
+            $estado = "SI";
+        } else if ($ruc == Util::RUC_MAGNUNN_EXPRESS && $name == "requerimiento-compras") {
+            $estado = "SI";
+        } else if ($ruc == Util::RUC_MAGNUNN_EXPRESS && $name == "ingreso-articulos") {
+            $estado = "SI";
+        } else if ($ruc == Util::RUC_MAGNUNN_EXPRESS && $name == "salida-articulos") {
+            $estado = "SI";
+        } else if ($ruc == Util::RUC_MAGNUNN_EXPRESS && $name == "kardex") {
+            $estado = "SI";
+        }
+        /////RUC_MAGNUNN_EXPRESS
+
         /////MJ MINING
         if ($ruc == Util::RUC_MJ_MINING && $name == "requerimiento-personal") {
             $estado = "SI";
@@ -64,6 +84,16 @@ class Util extends Model
             $estado = "SI";
         }
         /////MJ MINING
+
+        /////RUC_METALPRO_ANDES
+        if ($ruc == Util::RUC_METALPRO_ANDES && $name == "requerimiento-personal") {
+            $estado = "SI";
+        } else if ($ruc == Util::RUC_METALPRO_ANDES && $name == "solicitud-cotizacion") {
+            $estado = "SI";
+        }else  if ($ruc == Util::RUC_METALPRO_ANDES && $name == "orden-compra") {
+            $estado = "SI";
+        }
+        /////RUC_METALPRO_ANDES
 
         /////RUC_GPP_MINING
         if ($ruc == Util::RUC_GPP_MINING && $name == "orden-compra") {
