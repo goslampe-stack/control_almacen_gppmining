@@ -11,6 +11,7 @@ use App\Models\Tienda;
 use App\Models\Util;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade as PDF;
+use Carbon\Carbon;
 
 class OrdenCompra extends Controller
 {
@@ -189,6 +190,15 @@ class OrdenCompra extends Controller
             $ruc = $sucursalEmpresa->empresa->ruc;
             if (Util::tienePdfDefinidoEmpresa($ruc, 'orden-compra')) {
                 $nameUrl = "admin.pdf.empresa." . $ruc . ".orden-compra";
+
+                //PONER DIRECCION 
+                if ($ruc == Util::RUC_GPP_MINING) {
+                    //VERIFICAMOS FECHA 
+                    if (Carbon::parse($orden->fecha_pedido)->lt('2026-02-16')) {
+                        $nameUrl = "admin.pdf.empresa." . $ruc . ".orden-compra-auxiliar";
+                    }
+                }
+                
 
             }
         }

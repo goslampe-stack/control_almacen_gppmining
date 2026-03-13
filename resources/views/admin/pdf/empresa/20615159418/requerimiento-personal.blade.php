@@ -233,8 +233,7 @@
                                     <p>
                                         <b>{{ \App\Models\Util::getMayuscula($sucursalEmpresa->empresa->razon_social) }}</b>
                                      <br><b>RUC: {{$sucursalEmpresa->empresa->ruc }}</b>
-                                     <br><b>DOM. FISCAL: OTR.SN NRO. SN OTR. ML. MIRADOR SHANCAYAN Nº S/N URB. EL
-                                        MIRADOR ANCASH - HUARAZ - INDEPENDENCIA</b>
+                                     <br><b>DOM. FISCAL: OTR.SN MZA. G LOTE. 01 INT. 201 OTR. COOP. VIV. LOS NARANJOS LA LIBERTAD - TRUJILLO - TRUJILLO</b>
                                     <br> <br><b>SEDE PRODUCTIVA: </b>OTR.SN NRO. S/N OTR. CERRO NUMEROYOC CONCESION ANITA
                                         M.L.M. COD. UNICO 09010657X01 ANCASH - CARHUAZ - YUNGAR<br>
                                      <br><b>CEL {{$sucursalEmpresa->empresa->celular }}</b><br>

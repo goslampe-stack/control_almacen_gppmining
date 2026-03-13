@@ -33,6 +33,10 @@ class Util extends Model
     public const  RUC_METALPRO_ANDES = "20615188973";
     public const  RUC_MAGNUNN_EXPRESS = "20613381709";
 
+    public const DOMICILIO_FISCAL_GPP_MINING_ACTUAL = "OTR.SN MZA. G LOTE. 01 INT. 201 OTR. COOP. VIV. LOS NARANJOS LA LIBERTAD - TRUJILLO - TRUJILLO";
+    public const DOMICILIO_FISCAL_GPP_MINING_ANTERIOR = "OTR.SN NRO. SN OTR. ML. MIRADOR SHANCAYAN Nº S/N URB. EL
+MIRADOR ANCASH - HUARAZ - INDEPENDENCIA";
+
     public static function tienePdfDefinidoEmpresa($ruc, $name)
     {
 
@@ -80,7 +84,7 @@ class Util extends Model
             $estado = "SI";
         } else if ($ruc == Util::RUC_MJ_MINING && $name == "solicitud-cotizacion") {
             $estado = "SI";
-        }else  if ($ruc == Util::RUC_MJ_MINING && $name == "orden-compra") {
+        } else  if ($ruc == Util::RUC_MJ_MINING && $name == "orden-compra") {
             $estado = "SI";
         }
         /////MJ MINING
@@ -90,7 +94,7 @@ class Util extends Model
             $estado = "SI";
         } else if ($ruc == Util::RUC_METALPRO_ANDES && $name == "solicitud-cotizacion") {
             $estado = "SI";
-        }else  if ($ruc == Util::RUC_METALPRO_ANDES && $name == "orden-compra") {
+        } else  if ($ruc == Util::RUC_METALPRO_ANDES && $name == "orden-compra") {
             $estado = "SI";
         }
         /////RUC_METALPRO_ANDES

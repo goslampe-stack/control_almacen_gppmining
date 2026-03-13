@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade as PDF;
 use App\Models\RequerimientoPersonal as Requerimeinto;
 use App\Models\SucursalEmpresa;
+use Carbon\Carbon;
+use COM;
 
 class RequerimientoPersonal extends Controller
 {
@@ -85,17 +87,28 @@ class RequerimientoPersonal extends Controller
         $abrirPdfPorEmpreas = Util::getAbrirPdfTipoEmpresaSeleccionada();
         $nameUrl = "admin.pdf.requerimiento-personal";
 
+
         ///verificamos si se abrira con la empresa tipo o normal
+
+
+
         if ($abrirPdfPorEmpreas == "SI") {
             $ruc = $sucursalEmpresa->empresa->ruc;
             if (Util::tienePdfDefinidoEmpresa($ruc, 'requerimiento-personal')) {
                 $nameUrl = "admin.pdf.empresa." . $ruc . ".requerimiento-personal";
                 //GRUPO ALFA DORADO
-               
+
                 if ($ruc == Util::RUC_GRUPO_ALFA_DORADO) {
-                    $alturaEmcabezado=$alturaEmcabezado+65;
+                    $alturaEmcabezado = $alturaEmcabezado + 65;
                 }
-                
+
+                //PONER DIRECCION 
+                if ($ruc == Util::RUC_GPP_MINING) {
+                    //VERIFICAMOS FECHA 
+                    if (Carbon::parse($requerimiento->fecha_pedido)->lt('2026-02-16')) {
+                        $nameUrl = "admin.pdf.empresa." . $ruc . ".requerimiento-personal-auxiliar";
+                    }
+                }
             }
         }
 

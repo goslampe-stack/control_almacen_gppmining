@@ -8,9 +8,10 @@
     @php
     $marginTop = intval($contadorTotal);
     @endphp
-    <style>
+      <style>
         * {
             margin: 1px;
+            font-size: 12px;
             padding: 0;   
               font-family: '{{$sucursalEmpresa->tipografia_pdf}}', sans-serif;
         }
@@ -26,10 +27,10 @@
         /* ================================================== */
 
         .plantilla .main-header {
-            background: url({{$sucursalEmpresa->imagen}});
+          
           background-size: cover;
             width: 100%;
-            height: 210px;
+            height: 0px;
             z-index: 100;
             position: absolute;
             top: 0px;
@@ -38,7 +39,7 @@
 
         .informacion {
             width: 100%;
-            margin-top: 170px;
+            margin-top: 0px;
            /*  margin-left: 1.5rem;
             margin-right: 1.5rem; */
         }
@@ -85,19 +86,34 @@
 
         .tableprincipal table {
             width: 100%;
-            margin-top: {{ $marginTop }}px;
+            margin-top: 460px;
 
             font-size: 12px;
         }
 
         .tableprincipal table th {
-           background: {{$sucursalEmpresa->colorPdf}};
+           background: orange;
             color: #fff;
             padding: 0.3rem 0rem;
             text-transform: uppercase;
         }
 
 
+
+        
+        .tablePrimerTable table th {
+           background: orange;
+            color: #fff;
+            padding: 0.3rem 0rem;
+            text-transform: uppercase;
+        }
+
+ .tablePrimerTable table {
+            width: 100%;
+           
+
+            font-size: 12px;
+        }
 
 
 
@@ -158,11 +174,11 @@
     <div class="plantilla">
         <header class="main-header">
             <div class="informacion">
-                <div class="ruc">
+             <!--    <div class="ruc">
                     <h3>&nbsp;</h3>
                     <br>
                 </div>
-
+ -->
 
 
                 <div class="orden">
@@ -170,32 +186,104 @@
                         <thead>
                             <tr>
                                 <th></th>
-                        
+                                <th></th>
+                                <th></th>
                             </tr>
 
                         </thead>
                         <tbody>
-                            <tr>
-                                <td colspan="2">
-                                     <p style="text-align: center;"> <b>ORDEN DE COMPRA</b>
-                                     <br>
-                                     <span> <b>N° de orden: </b> {{$orden->numero_orden_compra}}</span>
-                                    </p>
 
-                             </td>
-                            </tr>
-                        
-                         
-                           
                             <tr>
-                                       <td style=" vertical-align: top;" >
+                                <td width="200px">
+                                <img src="{{ asset('dist/empresa/logo_gpp_mining.jpeg') }}" alt="" width="150px" height="150px">
+                                 </td>
+                                <td align="right">
+                                    <p>
+                                        <b> ORDEN DE COMPRA</b>
+                                        <br>                                      
                                         <span>
-                                            <b> Fecha de compra:  </b> {{ \Carbon\Carbon::parse($orden->fecha_pedido)->format('d/m/Y') }}
+                                            N°: {{$orden->numero_orden_compra}}
                                         </span>
                                         <br>
+                                        <span>
+                                            REFERENCIA DE COTIZACION: {{$orden->cotizacion_proveedor}}
+                                        </span>
+                                         <br>                                       
+                                    </p>
 
-                                    <span>
-                                        <b> Proveedor: </b>  {{$orden->proveedor->razon_social}}
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                    <table width="100%">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th></th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td>
+                                    <p>
+                                        <b>{{ \App\Models\Util::getMayuscula($sucursalEmpresa->empresa->razon_social) }}</b>
+                                     <br><b>RUC: {{$sucursalEmpresa->empresa->ruc }}</b>
+                                     <br><b>DOM. FISCAL: OTR.SN NRO. SN OTR. ML. MIRADOR SHANCAYAN Nº S/N URB. EL
+                                        MIRADOR ANCASH - HUARAZ - INDEPENDENCIA</b>
+                                    <br> <br><b>SEDE PRODUCTIVA: </b>OTR.SN NRO. S/N OTR. CERRO NUMEROYOC CONCESION ANITA
+                                        M.L.M. COD. UNICO 09010657X01 ANCASH - CARHUAZ - YUNGAR<br>
+                                     <br><b>CEL {{$sucursalEmpresa->empresa->celular }}</b><br>
+                                    </p>
+                                </td>
+                                <td width="250px">
+                                    <p>
+                                        
+                                       
+                                     
+                                        <span>
+                                            Fecha de pedido: {{$orden->fecha_pedido}}
+                                        </span>
+                                        <br>
+                                        <span>
+                                           Fecha estimada de pago: {{$orden->fecha_estimada_pago}}
+                                        </span>
+                                         <br>
+                                        <span>
+                                            Condici&oacute;n de pago: Al cr&eacute;dito
+                                        </span>
+                                        <br>
+                                     
+                                    </p>
+
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+
+                  <div class="tablePrimerTable">
+                    <table  class="table">
+                        <thead>
+                            <tr>
+                                <th style="width: 50%;">Proveedor</th>
+                                <th style="width: 50%;">Direcci&oacute;n de entrega</th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                      
+
+                            <tr>
+
+                                <td style="width: 50%; vertical-align: top;">
+
+                                  <span>
+                                        <b> {{$orden->proveedor->razon_social}}</b>  
 
                                     </span><br>
                                     <span>
@@ -206,51 +294,57 @@
                                         <b> Domicilio: </b> {{$orden->proveedor->direccion}}
 
                                     </span><br>
-                                     <span>
-                                        <b> Tel&eacute;fono: </b> {{$orden->proveedor->celular}}
-
-                                    </span><br>
-
+                                 
                                     <span>
                                         <b> Email: </b> {{$orden->proveedor->correo_electronico}}
 
                                     </span><br>
-                                    <span>
-                                        <b> Forma de pago: </b> Cr&eacute;dito
 
-                                    </span><br>
+                                </td>
+
+                                <td style="width: 50%; vertical-align: middle;" >
+
                                     <span>
-                                        <b> Moneda: </b> Soles
+                                        <b> Recojo de las instalaciones del proveedor </b>  
 
                                     </span><br>
                                    
+                                </td>
+                             
 
-                                </td>
-                                <td width="20%">
-                                   
-                                     
-                                        <span>
-                                           <b>Doc relacionados</b>
-                                        </span>
-                                        <br>                                      
-                                       
-                                        <span>
-                                            N° de solicitud: {{$orden->solicitudCotizacion->numero_solicitud_cotizacion}}
-                                        </span>
-                                         <br>
-                                        <span>
-                                            N° de cotizacion: {{$orden->solicitudCotizacion->numero_cotizacion}}
-                                        </span>
-                                       
-                                      
-                                </td>
                             </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="tablePrimerTable">
+                    <table  class="table">
+                        <thead>
                             <tr>
-                                <td style="padding-top: 15px;"></td>
+                                <th >DATOS</th>
                             </tr>
-                           
 
-                          
+                        </thead>
+                        <tbody>
+                      
+
+                            <tr>
+
+                                <td style="width: 50%; vertical-align: top;">
+
+                                 
+                                    <span>
+                                        <b> Elaborado por: </b> ORTIZ BRAVO MELINA
+
+                                    </span><br>
+                                    <span>
+                                        <b> Autorizado por: </b> POMA PRUDENCIO GILBER ALEX
+
+                                    </span><br>
+                                </td>                             
+
+                            </tr>
 
                         </tbody>
                     </table>
@@ -315,11 +409,11 @@
                         <tbody>
                              <tr>
                                 <td>
-                                     <p style="margin-top: 15px;">Nota: {{$orden->descripcion_solicitamos}}
+                                     <p style="margin-top: 15px;">{{$orden->descripcion_solicitamos}}
 
                                         <br>
                                         <span>
-                                            <b>Direcci&oacute;n de entrega zona: </b>{{$orden->terminos_de_entrega}}
+                                            {{$orden->terminos_de_entrega}}
                                         </span>
                                     </p>
                                 </td>

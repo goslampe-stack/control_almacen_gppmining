@@ -164,7 +164,15 @@ class SolicitudCotizacionController extends Controller
         if ($abrirPdfPorEmpreas == "SI") {
             $ruc = $sucursalEmpresa->empresa->ruc;
             if (Util::tienePdfDefinidoEmpresa($ruc, 'solicitud-cotizacion')) {
-                $nameUrl = "admin.pdf.empresa." . $ruc . ".solicitud-cotizacion";               
+                $nameUrl = "admin.pdf.empresa." . $ruc . ".solicitud-cotizacion";    
+                
+                 //PONER DIRECCION 
+                if ($ruc == Util::RUC_GPP_MINING) {
+                    //VERIFICAMOS FECHA 
+                    if (Carbon::parse($solicitud->fecha_solicitud)->lt('2026-02-16')) {
+                        $nameUrl = "admin.pdf.empresa." . $ruc . ".solicitud-cotizacion-auxiliar";
+                    }
+                }
             }
         }
 

@@ -89,7 +89,7 @@
 
         .tableprincipal table {
             width: 100%;
-            margin-top: 430px;
+            margin-top: 460px;
 
             font-size: 12px;
         }
@@ -241,7 +241,11 @@
                                         </span>                                     
                                          <br>
                                         <span>
-                                            Condici&oacute;n de pago: Al cr&eacute;dito
+                                            Condici&oacute;n de pago: Al cr&eacute;dito.
+                                        </span>
+                                       <br>
+                                        <span>
+                                            N° Requerimiento Interno: {{$solicitud->requerimientoCompras->requerimientoPersonal->numero_requerimiento}}
                                         </span>
                                         <br>
                                     </p>
@@ -252,7 +256,8 @@
                         </tbody>
                     </table>
 
-                     <div class="tablePrimerTable">
+                    
+                         <div class="tablePrimerTable">
                     <table  class="table">
                         <thead>
                             <tr>
@@ -277,7 +282,7 @@
 
                                     </span><br>
                                     <span>
-                                        <b>{{$sucursalEmpresa->direccion}}</b>
+                                         <b>{{$solicitud->proveedor->direccion}}</b>
 
                                     </span><br>
                                  
@@ -303,14 +308,46 @@
                         </tbody>
                     </table>
                 </div>
-                </div>
+
+                
+                <div class="tablePrimerTable">
+                    <table  class="table">
+                        <thead>
+                            <tr>
+                                <th >DATOS</th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                      
+
+                            <tr>
+
+                                <td style="width: 50%; vertical-align: top;">
+
+                                 
+                                    <span>
+                                        <b> Elaborado por: </b> ORTIZ BRAVO MELINA
+
+                                    </span><br>
+                                    <span>
+                                        <b> Autorizado por: </b> POMA PRUDENCIO GILBER ALEX
+
+                                    </span><br>
+                                </td>                             
+
+                            </tr>
+
+                        </tbody>
+                    </table>
                 </div>
 
-             
-
-                <div class="descripcion">
-                    <p style="margin-top: 15px;">  Solicitamos tenga a bien cotizarnos los productos requeridos lineas abajo, por ser necesario para nuestras operaci&oacute;nes.</p>
+                 
                 </div>
+
+           
+
+        
             </div>
         </header>
 
@@ -363,11 +400,11 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    <p style="margin-top: 15px;">Nota: {{$solicitud->descripcion_solicitamos}}
+                                    <p style="margin-top: 15px;"> {{$solicitud->descripcion_solicitamos}}
 
                                         <br>
                                         <span>
-                                            <b>Direcci&oacute;n de entrega zona: </b>{{$solicitud->descripcion}}
+                                         <b></b>  {{$solicitud->descripcion}}
                                         </span>
                                     </p>
 
