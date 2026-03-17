@@ -233,7 +233,7 @@
                                     <p>
                                         <b>{{ \App\Models\Util::getMayuscula($sucursalEmpresa->empresa->razon_social) }}</b>
                                      <br><b>RUC: {{$sucursalEmpresa->empresa->ruc }}</b>
-                                     <br><b>DOM. FISCAL: CAL.28 DE JULIO NRO. 325 P.J. FLORENCIA DE MORA BA. 12 LA LIBERTAD - TRUJILLO - FLORENCIA DE MORA</b>
+                                     <br><b>DOM. PJ. ALTO DEL VALLE MZ.R LT 15 PRIMERA ETAPA NRO. S/N URB. MOCHE LA LIBERTAD - TRUJILLO - MOCHE</b>
                                      <br><br><b>CEL 950791647</b><br>
                                     </p>
                                 </td>
