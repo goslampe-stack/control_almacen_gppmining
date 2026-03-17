@@ -234,7 +234,7 @@
                                         <b>{{ \App\Models\Util::getMayuscula($sucursalEmpresa->empresa->razon_social) }}</b>
                                      <br><b>RUC: {{$sucursalEmpresa->empresa->ruc }}</b>
                                      <br><b>DOM. PJ. ALTO DEL VALLE MZ.R LT 15 PRIMERA ETAPA NRO. S/N URB. MOCHE LA LIBERTAD - TRUJILLO - MOCHE</b>
-                                     <br><br><b>CEL 950791647</b><br>
+                                     <!-- <br><br><b>CEL 950791647</b><br> -->
                                     </p>
                                 </td>
                                 <td width="250px">
