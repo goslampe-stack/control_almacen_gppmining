@@ -325,7 +325,7 @@
 
                                  
                                     <span>
-                                        <b> Elaborado por: </b> HUAMAN MORILLAS JOSE RODOLFO
+                                        <b> Elaborado por: </b> CHUNGA PLACENCIA RODRIGO ALEXANDER
 
                                     </span><br>
                                     <span>
